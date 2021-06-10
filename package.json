@@ -1,0 +1,51 @@
+{
+  "name": "@threebird/controls",
+  "version": "0.1.0",
+  "description": "A collection of components to make three.js camera controls easier",
+  "main": "dist/threebird-controls.npm.esm.js",
+  "module": "dist/threebird-controls.npm.esm.js",
+  "typings": "dist/threebird-controls.d.ts",
+  "author": "",
+  "license": "ISC",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -w -c",
+    "dev": "concurrently \"npm run watch\"  \"cd examples/demos && http-server\"",
+    "prettier": "prettier --write src/**",
+    "build:types": "tsc --declaration --emitDeclarationOnly --declarationMap --declarationDir lib/",
+    "api:extract": "api-extractor run --local --verbose",
+    "api:generate": "api-documenter markdown --input-folder temp --output-folder docs/",
+    "build:docs": "npm run build:types && npm run api:extract && npm run api:generate",
+    "examples:copy": "cp dist/threebird-controls.min.js examples/installation/script-src/ && cp dist/threebird-controls.web.esm.js examples/installation/es-module/",
+    "examples:link": "cd examples/installation/webpack && npm link ../../../",
+    "build:production": "export NODE_ENV=production || set NODE_ENV=production && npm run build && npm run examples:copy && npm run examples:link",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "gsap": "^3.6.1",
+    "three": "^0.122.0"
+  },
+  "devDependencies": {
+    "@microsoft/api-documenter": "^7.13.16",
+    "@microsoft/api-extractor": "^7.16.1",
+    "@rbnlffl/rollup-plugin-eslint": "^2.0.0",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "@vinicius73/rollup-plugin-skypack-resolver": "^2.1.0",
+    "concurrently": "^6.2.0",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "gsap": "^3.6.1",
+    "prettier": "2.3.0",
+    "rollup": "^2.50.5",
+    "rollup-plugin-terser": "^7.0.2",
+    "three": "^0.122.0",
+    "tslib": "^2.2.0",
+    "typescript": "^4.3.2"
+  }
+}

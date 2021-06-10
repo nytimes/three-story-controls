@@ -1,0 +1,1 @@
+{"version":3,"file":"AdaptorEvent.d.ts","sourceRoot":"","sources":["../../src/adaptors/AdaptorEvent.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,mBAAmB;IAClC,IAAI,EAAE,SAAS,CAAA;CAChB;AAED,MAAM,WAAW,qBAAqB;IACpC,IAAI,EAAE,QAAQ,CAAA;CACf;AAED,MAAM,WAAW,2BAA2B;IAC1C,IAAI,EAAE,iBAAiB,CAAA;CACxB"}

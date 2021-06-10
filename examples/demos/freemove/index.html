@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Movement Controls</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .canvas-parent {
+      width: 100vw;
+      height: 100vh;
+      touch-action: none;
+    }
+    p {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 300px;
+      padding: 1rem 2rem;
+      font-family:'Courier New', Courier, monospace;
+      line-height: 1.2;
+      background-color: white;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class='canvas-parent'>
+  </div>
+
+  <p>
+    Use arrow/WASD keys or mouse wheel/trackpad to move around, and click and drag to turn/rotate the camera.
+  </p>
+
+  <script type='module' src='script.js'></script>
+</body>
+</html>

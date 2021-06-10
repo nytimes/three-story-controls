@@ -1,0 +1,7 @@
+**/node_modules
+**/tsdoc-metadata.json
+temp/**
+
+.vscode
+**/.DS_Store
+*.org

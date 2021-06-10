@@ -22,6 +22,8 @@
     "examples:copy": "cp dist/threebird-controls.min.js examples/installation/script-src/ && cp dist/threebird-controls.web.esm.js examples/installation/es-module/",
     "examples:link": "cd examples/installation/webpack && npm link ../../../",
     "build:production": "export NODE_ENV=production || set NODE_ENV=production && npm run build && npm run examples:copy && npm run examples:link",
+    "deploy:demos": "git subtree push --prefix examples/demos origin gh-pages",
+    "deploy": "npm run build:docs && npm run build:production && git push origin main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {

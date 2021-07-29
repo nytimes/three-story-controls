@@ -1,0 +1,9 @@
+**/node_modules
+**/tsdoc-metadata.json
+temp/**
+examples/demos/test
+examples/installation/webpack/dist/main.*
+
+.vscode
+**/.DS_Store
+*.org

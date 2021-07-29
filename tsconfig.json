@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "moduleResolution": "node",
+    "lib": [
+      "esnext",
+      "dom"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

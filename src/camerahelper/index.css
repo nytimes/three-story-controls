@@ -1,0 +1,108 @@
+.tb-ch {
+  width: 350px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  background-color: white;
+  box-sizing: border-box;
+  overflow-x: visible;
+  transition: all 0.2s ease-in-out;
+  &.collapsed { left: -350px; }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  button {
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+
+  .btn-round {
+    font-size: 1.8rem;
+    line-height: 1;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    right: -3rem;
+    bottom: 0.5rem;
+    &.collapse {
+      bottom: 3.5rem;
+    }
+  }
+
+  .controls {
+    position: absolute;
+    bottom: 0;
+    height: 185px;
+    border-top: 1px solid black;
+    padding: 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .btn-text {
+    padding: 0.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  input[type='range'] {
+    width: 100%;
+  }
+
+
+
+  .pois {
+    height: calc(100vh - 185px - 1rem);
+    overflow: scroll;
+    padding: 1rem 1rem 0;
+  }
+  
+  .poi {
+    margin-bottom: 1rem;
+    h2 {
+      font-size: 1rem;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: row;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      min-width: 0;
+      margin-right: 0.5rem;
+    }
+    .poi-controls {
+      display: flex;
+      flex-direction: column;
+      button {
+        padding: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 0.25rem;
+      }
+    }
+    .poi-params {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: calc(100% - 2.5rem);
+    }
+    label, input, select {
+      width: 50%;
+      font-size: 0.7rem;
+      font-family: monospace;
+      margin: 0.25rem 0;
+    }
+    input {
+      text-align: center;
+    }
+  }
+
+}

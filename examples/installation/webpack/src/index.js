@@ -1,3 +1,3 @@
-import * as Controls from '@threebird/controls'
+import * as Controls from 'three-story-controls'
 
 console.log(Controls)

@@ -3,7 +3,7 @@ import { CameraRig, CameraAction, RigComponent } from '../CameraRig'
 import { PointerAdaptor } from '../adaptors/PointerAdaptor'
 
 /**
- * Properties that can be passed to the {@link @threebird/controls#ThreeDOFControls} constructor
+ * Properties that can be passed to the {@link three-story-controls#ThreeDOFControls} constructor
  */
 //TODO: add option for relative or absolute control (in terms of screen space)
 export interface ThreeDOFControlsProps {
@@ -34,7 +34,7 @@ const defaultProps: ThreeDOFControlsProps = {
  * Control scheme for slight rotation and translation movement in response to mouse movements (designed to be used in conjunction with other control schemes)
  * @remarks
  * Note: CSS property `touch-action: none` will probably be needed on listener element
- * See {@link @threebird/controls#ThreeDOFControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ThreeDOFControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  * const scene = new Scene()

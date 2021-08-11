@@ -4,15 +4,15 @@
   "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
   "apiReport": {
     "enabled": true,
-    "reportFileName": "threebird-controls.api.md"
+    "reportFileName": "three-story-controls.api.md"
   },
   "docModel": {
     "enabled": true,
-    "apiJsonFilePath": "<projectFolder>/temp/threebird-controls.api.json"
+    "apiJsonFilePath": "<projectFolder>/temp/three-story-controls.api.json"
   },
   "dtsRollup": {
     "enabled": true,
-    "untrimmedFilePath": "<projectFolder>/dist/threebird-controls.d.ts"
+    "untrimmedFilePath": "<projectFolder>/dist/three-story-controls.d.ts"
   },
   "messages": {
     "compilerMessageReporting": {

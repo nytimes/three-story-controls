@@ -1,7 +1,7 @@
 import { BaseControls } from './BaseControls';
 import { CameraRig } from '../CameraRig';
 /**
- * Properties that can be passed to the {@link @threebird/controls#ThreeDOFControls} constructor
+ * Properties that can be passed to the {@link three-story-controls#ThreeDOFControls} constructor
  */
 export interface ThreeDOFControlsProps {
     /** DOM element that should listen for pointer events. Defaults to `document.body` */
@@ -21,7 +21,7 @@ export interface ThreeDOFControlsProps {
  * Control scheme for slight rotation and translation movement in response to mouse movements (designed to be used in conjunction with other control schemes)
  * @remarks
  * Note: CSS property `touch-action: none` will probably be needed on listener element
- * See {@link @threebird/controls#ThreeDOFControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ThreeDOFControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  * const scene = new Scene()

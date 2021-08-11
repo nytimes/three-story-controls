@@ -28,7 +28,7 @@ export interface WheelAdaptorContinuousEvent extends ContinuousEvent {
 export type WheelAdaptorType = 'discrete' | 'continuous'
 
 /**
- * Properties that can be passed to the {@link @threebird/controls#WheelAdaptor} constructor
+ * Properties that can be passed to the {@link three-story-controls#WheelAdaptor} constructor
  */
 export interface WheelAdaptorProps {
   /** 'discrete' or 'continuous' */
@@ -55,7 +55,7 @@ const defaultProps: Partial<WheelAdaptorProps> = {
 /**
  * Parse mouse wheel events and emit either dampened values, or trigger events for swipes that cross a given threshold.
  * @remarks
- * See {@link @threebird/controls#WheelAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#WheelAdaptorProps} for all properties that can be passed to the constructor.
  * @example Discrete adaptor
  * ```javascript
  * const wheelAdaptor = new WheelAdaptor({ type: 'discrete' })

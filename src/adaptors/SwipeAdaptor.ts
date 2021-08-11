@@ -12,7 +12,7 @@ export interface SwipeAdaptorEvent extends DiscreteEvent {
 }
 
 /**
- * Properties that can be passed to the {@link @threebird/controls#SwipeAdaptor} constructor
+ * Properties that can be passed to the {@link three-story-controls#SwipeAdaptor} constructor
  */
 export interface SwipeAdaptorProps {
   /** DOM element to listen to events on. Defaults to document.body */
@@ -32,7 +32,7 @@ const defaultProps: SwipeAdaptorProps = {
 /**
  * Emits events in response to swipe gestures above a given threshold.
  * @remarks
- * See {@link @threebird/controls#SwipeAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#SwipeAdaptorProps} for all properties that can be passed to the constructor.
  * Note: CSS property `touch-action: none` will probably be needed on listener element
  * @example Swipe adaptor
  * ```javascript

@@ -1,5 +1,5 @@
 import { Scene, PerspectiveCamera, WebGLRenderer, GridHelper } from 'three'
-import { CameraRig, FreeMovementControls } from '@threebird/controls'
+import { CameraRig, FreeMovementControls } from 'three-story-controls'
 
 const canvasParent = document.querySelector('.canvas-parent')
 

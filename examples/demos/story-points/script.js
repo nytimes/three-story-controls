@@ -11,7 +11,7 @@ import {
   Vector3,
   HemisphereLight,
 } from 'three'
-import { CameraRig, CameraAction, StoryPointsControls, ThreeDOFControls } from '@threebird/controls'
+import { CameraRig, CameraAction, StoryPointsControls, ThreeDOFControls } from 'three-story-controls'
 
 const canvasParent = document.querySelector('.canvas-parent')
 const nextBtn = document.querySelector('.next')

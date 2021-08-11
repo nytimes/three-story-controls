@@ -124,7 +124,7 @@ class Damper {
 }
 
 /**
- * Enum of camera actions used to control a {@link @threebird/controls#CameraRig}
+ * Enum of camera actions used to control a {@link three-story-controls#CameraRig}
  */
 var CameraAction;
 (function (CameraAction) {
@@ -137,7 +137,7 @@ var CameraAction;
     CameraAction["Zoom"] = "Zoom";
 })(CameraAction || (CameraAction = {}));
 /**
- * Enum of {@link @threebird/controls#CameraRig} parts
+ * Enum of {@link three-story-controls#CameraRig} parts
  */
 var RigComponent;
 (function (RigComponent) {
@@ -177,12 +177,12 @@ const ActionMappingByUpAxis = {
     },
 };
 /**
- * The CameraRig holds the camera, and can respond to {@link @threebird/controls#CameraAction}s such as Pan/Tilt/Dolly etc. It can also be controlled along a given path (in the form of an `AnimationClip`), or tweened to specified points.
+ * The CameraRig holds the camera, and can respond to {@link three-story-controls#CameraAction}s such as Pan/Tilt/Dolly etc. It can also be controlled along a given path (in the form of an `AnimationClip`), or tweened to specified points.
  *
  * @remarks
  * The rig is constructed of three objects, analagous to a body, head and eyes. The camera is nested in the eyes and is never transformed directly.
  *
- * Instead of specifying the axis to rotate/translate the camera, {@link @threebird/controls#CameraAction}s are used. The rotation order of actions is always `Pan` then `Tilt` then `Roll`.
+ * Instead of specifying the axis to rotate/translate the camera, {@link three-story-controls#CameraAction}s are used. The rotation order of actions is always `Pan` then `Tilt` then `Roll`.
  * The mapping of these actions to axes depends on the up axis, which defaults to `Y` (but can be changed with the {@link CameraRig.setUpAxis | setUpAxis() method}):
  *
  * * `CameraAction.Pan` rotates around the `Y` axis
@@ -565,7 +565,7 @@ const defaultProps$9 = {
 /**
  * Parse keyboard events and emit either dampened values for continuous keypresses, or trigger events named according to a provided keymapping.
  * @remarks
- * See {@link @threebird/controls#KeyboardAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#KeyboardAdaptorProps} for all properties that can be passed to the constructor.
  * @example Continuous adaptor
  * ```javascript
  * const keyboardAdaptor = new KeyboardAdaptor({ type: 'continuous', dampingFactor: 0.2 })
@@ -664,7 +664,7 @@ const defaultProps$8 = {
 /**
  * Parse pointer events to emit dampened, normalized coordinates along with the pointer count (for detecting multi-touch or drag events)
  * @remarks
- * See {@link @threebird/controls#PointerAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#PointerAdaptorProps} for all properties that can be passed to the constructor.
  * Note: CSS property `touch-action: none` will probably be needed on listener element
  * @example Pointer adaptor
  * ```javascript
@@ -833,7 +833,7 @@ const defaultProps$7 = {
 /**
  * Emits normalized values for the amount a given DOM element has been scrolled through.
  * @remarks
- * See {@link @threebird/controls#ScrollAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ScrollAdaptorProps} for all properties that can be passed to the constructor.
  * @example Scroll adaptor
  * ```javascript
  * const scrollAdaptor = new ScrollAdaptor({ scrollElement: document.querySelector('.scroller'), dampingFactor: 0.1 })
@@ -940,7 +940,7 @@ const defaultProps$6 = {
 /**
  * Emits events in response to swipe gestures above a given threshold.
  * @remarks
- * See {@link @threebird/controls#SwipeAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#SwipeAdaptorProps} for all properties that can be passed to the constructor.
  * Note: CSS property `touch-action: none` will probably be needed on listener element
  * @example Swipe adaptor
  * ```javascript
@@ -1004,7 +1004,7 @@ const defaultProps$5 = {
 /**
  * Parse mouse wheel events and emit either dampened values, or trigger events for swipes that cross a given threshold.
  * @remarks
- * See {@link @threebird/controls#WheelAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#WheelAdaptorProps} for all properties that can be passed to the constructor.
  * @example Discrete adaptor
  * ```javascript
  * const wheelAdaptor = new WheelAdaptor({ type: 'discrete' })
@@ -1090,7 +1090,7 @@ const defaultProps$4 = {
  * Control scheme to move the camera with arrow/WASD keys and mouse wheel; and rotate the camera with click-and-drag events.
  * @remarks
  *  Note: CSS property `touch-action: none` will probably be needed on listener element
- * See {@link @threebird/controls#FreeMovementControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#FreeMovementControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  * const scene = new Scene()
@@ -1107,7 +1107,7 @@ const defaultProps$4 = {
  *
  */
 class FreeMovementControls {
-    /** {@inheritDoc @threebird/controls#FreeMovementControlsProps#} */
+    /** {@inheritDoc three-story-controls#FreeMovementControlsProps#} */
     constructor(cameraRig, props = {}) {
         this.enabled = false;
         this.cameraRig = cameraRig;
@@ -1199,7 +1199,7 @@ const mapRange = (number, inMin, inMax, outMin, outMax) => {
 /**
  * Control scheme to scrub through the CameraRig's `AnimationClip` based on the scroll of a DOM Element
  * @remarks
- * See {@link @threebird/controls#ScrollControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ScrollControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  * const scene = new Scene()
@@ -1299,7 +1299,7 @@ const defaultProps$2 = {
 /**
  * Control scheme to transition the camera between given points in world space.
  * @remarks
- * See {@link @threebird/controls#StoryPointsControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#StoryPointsControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  *
@@ -1443,7 +1443,7 @@ const defaultProps$1 = {
  * Control scheme to transition the camera between specific points (frames) along a path specified through an `AnimationClip`.
  * @remarks
  * Note: CSS property `touch-action: none` will probably be needed on listener element
- * See {@link @threebird/controls#PathPointsControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#PathPointsControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  *
@@ -1588,7 +1588,7 @@ const defaultProps = {
  * Control scheme for slight rotation and translation movement in response to mouse movements (designed to be used in conjunction with other control schemes)
  * @remarks
  * Note: CSS property `touch-action: none` will probably be needed on listener element
- * See {@link @threebird/controls#ThreeDOFControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ThreeDOFControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  * const scene = new Scene()
@@ -1969,4 +1969,4 @@ class CameraHelper {
 }
 
 export { Axis, BaseAdaptor, CameraAction, CameraHelper, CameraRig, Damper, FreeMovementControls, KeyboardAdaptor, PathPointsControls, PointerAdaptor, RigComponent, ScrollAdaptor, ScrollControls, StoryPointsControls, SwipeAdaptor, ThreeDOFControls, WheelAdaptor };
-//# sourceMappingURL=threebird-controls.esm.js.map
+//# sourceMappingURL=three-story-controls.esm.js.map

@@ -20,7 +20,7 @@ export interface ScrollAction {
     bufferedEndPx: number;
 }
 /**
- * Properties that can be passed to the {@link @threebird/controls#ScrollControls} constructor
+ * Properties that can be passed to the {@link three-story-controls#ScrollControls} constructor
  */
 export interface ScrollControlsProps {
     /** Long DOM Element to observe */
@@ -43,7 +43,7 @@ export interface ScrollControlsProps {
 /**
  * Control scheme to scrub through the CameraRig's `AnimationClip` based on the scroll of a DOM Element
  * @remarks
- * See {@link @threebird/controls#ScrollControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ScrollControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  * const scene = new Scene()

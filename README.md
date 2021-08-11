@@ -1,6 +1,6 @@
 
 <div align="center">
-  <h1>Threebird Controls</h1>
+  <h1>Story Controls</h1>
   <img width="500" src="https://media.giphy.com/media/QMim8tRiABuko/giphy.gif" />
   <p>A collection of three.js camera control schemes and helper components. ✨</p>
   <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-yellow.svg" />
@@ -29,7 +29,7 @@ Here is an example using the `FreeMovementControls` scheme, where arrow keys and
 
 ```javascript
 import { Scene, PerspectiveCamera, WebGLRenderer, GridHelper } from 'https://cdn.skypack.dev/three@[VERSION]'
-import { CameraRig, FreeMovementControls } from './threebird-controls.web.esm.js'
+import { CameraRig, FreeMovementControls } from './three-story-controls.web.esm.js'
 
 const scene = new Scene()
 const camera = new PerspectiveCamera()
@@ -64,15 +64,15 @@ render()
 Replace `[VERSION]` in the code below accordingly.
 
 ### 1. Script tag
-Download [`dist/threebird-controls.min.js`](dist/threebird-controls.min.js) and include it in your HTML file with a script tag, along with three.js and gsap. This will expose a global variable `ThreebirdControls`. See [here](examples/installation/script-src) for more:
+Download [`dist/three-story-controls.min.js`](dist/three-story-controls.min.js) and include it in your HTML file with a script tag, along with three.js and gsap. This will expose a global variable `ThreeStoryControls`. See [here](examples/installation/script-src) for more:
   ```html
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r[VERSION]/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/[VERSION]/gsap.min.js"></script>
-  <script src='threebird-controls.min.js'></script>
+  <script src='three-story-controls.min.js'></script>
   ```
 
 ### 2. ES Module
-Download [`dist/threebird-controls.esm.min.js`](dist/threebird-controls.esm.min.js) and use an `importmap-shim` to import the dependencies. See [here](examples/installation/es-module) for a full example. The [demos](examples/demos) also use this method of installation:
+Download [`dist/three-story-controls.esm.min.js`](dist/three-story-controls.esm.min.js) and use an `importmap-shim` to import the dependencies. See [here](examples/installation/es-module) for a full example. The [demos](examples/demos) also use this method of installation:
   #### **`index.html`**
   ```html
   <script async src="https://unpkg.com/es-module-shims@0.11.1/dist/es-module-shims.js"></script>
@@ -81,7 +81,7 @@ Download [`dist/threebird-controls.esm.min.js`](dist/threebird-controls.esm.min.
     "imports": {
       "three": "https://cdn.skypack.dev/three@0.129.0",
       "gsap": "https://cdn.skypack.dev/gsap@3.6.1",
-      "@threebird/controls" : "./threebird-controls.esm.min.js"
+      "three-story-controls" : "./three-story-controls.esm.min.js"
     }
   }
   </script>
@@ -90,13 +90,13 @@ Download [`dist/threebird-controls.esm.min.js`](dist/threebird-controls.esm.min.
   #### **`index.js`**
   ```javascript
   import { Scene, PerspectiveCamera } from 'three'
-  import { ScrollControls } from '@threebird/controls'
+  import { ScrollControls } from 'three-story-controls'
   ```
 
 ### 3. NPM
 If you use a build system such as Webpack / Parcel / Rollup etc, you can also install the library along with three.js and gsap from npm:
 ```
-npm install -s three gsap @threebird/controls
+npm install -s three gsap three-story-controls
 ```
 See [here](examples/installation/webpack) for a webpack example.
 

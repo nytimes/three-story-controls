@@ -12,7 +12,7 @@ export interface StoryPointMarker {
     ease?: string;
 }
 /**
- * Properties that can be passed to the {@link @threebird/controls#StoryPointsControls} constructor
+ * Properties that can be passed to the {@link three-story-controls#StoryPointsControls} constructor
  */
 export interface StoryPointsControlsProps {
     /** Whether to cycle to the first/last POI after reaching the end/start. When false, controls with emit 'ExitStoryPoints' events. Defaults to false. */
@@ -23,8 +23,8 @@ export interface StoryPointsControlsProps {
 /**
  * Control scheme to transition the camera between given points in world space.
  * @remarks
- * See {@link @threebird/controls#StoryPointsControlsProps} for all properties that can be passed to the constructor.
- * See {@link @threebird/controls#StoryPointMarker} for POI properties
+ * See {@link three-story-controls#StoryPointsControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#StoryPointMarker} for POI properties
  * @example
  * ```js
  *

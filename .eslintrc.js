@@ -28,7 +28,7 @@ module.exports = {
     'dist/**',
     'lib/**',
     'examples/installation/**',
-    'examples/demos/threebird-controls.web.esm.js',
+    'examples/demos/three-story-controls.web.esm.js',
     '*.css',
   ],
 }

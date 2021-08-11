@@ -25,7 +25,7 @@ export interface PointerAdaptorEvent extends ContinuousEvent {
 }
 
 /**
- * Properties that can be passed to the {@link @threebird/controls#PointerAdaptor} constructor
+ * Properties that can be passed to the {@link three-story-controls#PointerAdaptor} constructor
  */
 export interface PointerAdaptorProps {
   /** DOM element that should listen for pointer events. Defaults to `document.body` */
@@ -51,7 +51,7 @@ const defaultProps: PointerAdaptorProps = {
 /**
  * Parse pointer events to emit dampened, normalized coordinates along with the pointer count (for detecting multi-touch or drag events)
  * @remarks
- * See {@link @threebird/controls#PointerAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#PointerAdaptorProps} for all properties that can be passed to the constructor.
  * Note: CSS property `touch-action: none` will probably be needed on listener element
  * @example Pointer adaptor
  * ```javascript

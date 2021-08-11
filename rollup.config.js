@@ -6,7 +6,7 @@ import nested from 'postcss-nested'
 
 const { NODE_ENV } = process.env
 const input = 'src/index.ts'
-const name = 'ThreebirdControls'
+const name = 'ThreeStoryControls'
 const sourcemap = true
 
 const commonPlugins = () => {
@@ -27,7 +27,7 @@ const commonPlugins = () => {
 const umdConfig = {
   input,
   output: {
-    file: 'dist/threebird-controls.min.js',
+    file: 'dist/three-story-controls.min.js',
     format: 'umd',
     name,
     sourcemap,
@@ -43,7 +43,7 @@ const umdConfig = {
 const esmConfig = {
   input,
   output: {
-    file: `dist/threebird-controls.esm${NODE_ENV == 'production' ? '.min' : ''}.js`,
+    file: `dist/three-story-controls.esm${NODE_ENV == 'production' ? '.min' : ''}.js`,
     format: 'es',
     name,
     sourcemap,

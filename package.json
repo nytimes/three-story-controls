@@ -1,10 +1,10 @@
 {
-  "name": "@threebird/controls",
+  "name": "three-story-controls",
   "version": "0.1.0",
   "description": "A collection of components to make three.js camera controls easier",
-  "main": "dist/threebird-controls.esm.min.js",
-  "module": "dist/threebird-controls.esm.min.js",
-  "typings": "dist/threebird-controls.d.ts",
+  "main": "dist/three-story-controls.esm.min.js",
+  "module": "dist/three-story-controls.esm.min.js",
+  "typings": "dist/three-story-controls.d.ts",
   "author": "",
   "license": "ISC",
   "directories": {

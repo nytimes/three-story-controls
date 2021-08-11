@@ -49,7 +49,7 @@ export interface CameraMoveEndEvent {
 }
 
 /**
- * Enum of camera actions used to control a {@link @threebird/controls#CameraRig}
+ * Enum of camera actions used to control a {@link three-story-controls#CameraRig}
  */
 export enum CameraAction {
   Pan = 'Pan',
@@ -62,7 +62,7 @@ export enum CameraAction {
 }
 
 /**
- * Enum of {@link @threebird/controls#CameraRig} parts
+ * Enum of {@link three-story-controls#CameraRig} parts
  */
 export enum RigComponent {
   Body = 'body',
@@ -122,12 +122,12 @@ const ActionMappingByUpAxis = {
 }
 
 /**
- * The CameraRig holds the camera, and can respond to {@link @threebird/controls#CameraAction}s such as Pan/Tilt/Dolly etc. It can also be controlled along a given path (in the form of an `AnimationClip`), or tweened to specified points.
+ * The CameraRig holds the camera, and can respond to {@link three-story-controls#CameraAction}s such as Pan/Tilt/Dolly etc. It can also be controlled along a given path (in the form of an `AnimationClip`), or tweened to specified points.
  *
  * @remarks
  * The rig is constructed of three objects, analagous to a body, head and eyes. The camera is nested in the eyes and is never transformed directly.
  *
- * Instead of specifying the axis to rotate/translate the camera, {@link @threebird/controls#CameraAction}s are used. The rotation order of actions is always `Pan` then `Tilt` then `Roll`.
+ * Instead of specifying the axis to rotate/translate the camera, {@link three-story-controls#CameraAction}s are used. The rotation order of actions is always `Pan` then `Tilt` then `Roll`.
  * The mapping of these actions to axes depends on the up axis, which defaults to `Y` (but can be changed with the {@link CameraRig.setUpAxis | setUpAxis() method}):
  *
  * * `CameraAction.Pan` rotates around the `Y` axis

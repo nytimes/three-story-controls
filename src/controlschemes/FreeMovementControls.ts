@@ -5,7 +5,7 @@ import { PointerAdaptor } from '../adaptors/PointerAdaptor'
 import { WheelAdaptor } from '../adaptors/WheelAdaptor'
 
 /**
- * Properties that can be passed to the {@link @threebird/controls#FreeMovementControls} constructor
+ * Properties that can be passed to the {@link three-story-controls#FreeMovementControls} constructor
  */
 export interface FreeMovementControlsProps {
   domElement?: HTMLElement
@@ -43,7 +43,7 @@ const defaultProps: FreeMovementControlsProps = {
  * Control scheme to move the camera with arrow/WASD keys and mouse wheel; and rotate the camera with click-and-drag events.
  * @remarks
  *  Note: CSS property `touch-action: none` will probably be needed on listener element
- * See {@link @threebird/controls#FreeMovementControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#FreeMovementControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  * const scene = new Scene()
@@ -70,7 +70,7 @@ export class FreeMovementControls implements BaseControls {
   private tiltDegreeFactor: number
   private enabled = false
 
-  /** {@inheritDoc @threebird/controls#FreeMovementControlsProps#} */
+  /** {@inheritDoc three-story-controls#FreeMovementControlsProps#} */
   constructor(cameraRig: CameraRig, props: FreeMovementControlsProps = {}) {
     this.cameraRig = cameraRig
 

@@ -10,7 +10,7 @@ export interface PathPointMarker {
 }
 
 /**
- * Properties that can be passed to the {@link @threebird/controls#PathPointsControls} constructor
+ * Properties that can be passed to the {@link three-story-controls#PathPointsControls} constructor
  */
 export interface PathPointsControlsProps {
   /** Threshold of wheel delta that triggers a transition. Defaults to 15 */
@@ -37,7 +37,7 @@ const defaultProps: PathPointsControlsProps = {
  * Control scheme to transition the camera between specific points (frames) along a path specified through an `AnimationClip`.
  * @remarks
  * Note: CSS property `touch-action: none` will probably be needed on listener element
- * See {@link @threebird/controls#PathPointsControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#PathPointsControlsProps} for all properties that can be passed to the constructor.
  * @example
  * ```js
  *

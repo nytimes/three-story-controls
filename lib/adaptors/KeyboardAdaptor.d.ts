@@ -35,7 +35,7 @@ export interface KeyMapping {
     [key: string]: string[];
 }
 /**
- * Properties that can be passed to the {@link @threebird/controls#KeyboardAdaptor} constructor
+ * Properties that can be passed to the {@link three-story-controls#KeyboardAdaptor} constructor
  */
 export interface KeyboardAdaptorProps {
     /** 'discrete' or 'continuous' */
@@ -65,7 +65,7 @@ export interface KeyboardAdaptorProps {
 /**
  * Parse keyboard events and emit either dampened values for continuous keypresses, or trigger events named according to a provided keymapping.
  * @remarks
- * See {@link @threebird/controls#KeyboardAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#KeyboardAdaptorProps} for all properties that can be passed to the constructor.
  * @example Continuous adaptor
  * ```javascript
  * const keyboardAdaptor = new KeyboardAdaptor({ type: 'continuous', dampingFactor: 0.2 })

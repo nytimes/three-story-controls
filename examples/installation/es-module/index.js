@@ -1,7 +1,7 @@
 import { Scene, PerspectiveCamera } from 'three'
-import * as ThreebirdControls from '@threebird/controls'
+import * as ThreeStoryControls from 'three-story-controls'
 
 const scene = new Scene()
 const camera = new PerspectiveCamera()
 
-console.log(ThreebirdControls, scene, camera)
+console.log(ThreeStoryControls, scene, camera)

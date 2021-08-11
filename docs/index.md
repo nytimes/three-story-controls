@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [@threebird/controls](./controls.md) |  |
+|  [three-story-controls](./three-story-controls.md) |  |
 

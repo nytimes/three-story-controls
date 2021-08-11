@@ -8,7 +8,7 @@ export interface ScrollAdaptorEvent extends ContinuousEvent {
     dampenedValues: DamperValues;
 }
 /**
- * Properties that can be passed to the {@link @threebird/controls#ScrollAdaptor} constructor
+ * Properties that can be passed to the {@link three-story-controls#ScrollAdaptor} constructor
  */
 export interface ScrollAdaptorProps {
     /** Long DOM Element to observe */
@@ -25,7 +25,7 @@ export interface ScrollAdaptorProps {
 /**
  * Emits normalized values for the amount a given DOM element has been scrolled through.
  * @remarks
- * See {@link @threebird/controls#ScrollAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ScrollAdaptorProps} for all properties that can be passed to the constructor.
  * @example Scroll adaptor
  * ```javascript
  * const scrollAdaptor = new ScrollAdaptor({ scrollElement: document.querySelector('.scroller'), dampingFactor: 0.1 })

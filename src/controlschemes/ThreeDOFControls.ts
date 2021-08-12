@@ -24,7 +24,7 @@ export interface ThreeDOFControlsProps {
 const defaultProps: ThreeDOFControlsProps = {
   domElement: document.body,
   panFactor: Math.PI / 20,
-  tiltFactor: Math.PI / 2,
+  tiltFactor: Math.PI / 20,
   truckFactor: 1,
   pedestalFactor: 1,
   dampingFactor: 0.7,

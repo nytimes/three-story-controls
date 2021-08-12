@@ -1,0 +1,189 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Controls</title>
+  <script async src="https://unpkg.com/es-module-shims@0.11.1/dist/es-module-shims.js"></script>
+  <script type="importmap-shim">
+    {
+      "imports": {
+        "three": "https://cdn.skypack.dev/three@0.129.0",
+        "gsap": "https://cdn.skypack.dev/gsap@3.6.1",
+        "three-story-controls" : "../../../dist/three-story-controls.esm.js"
+      }
+    }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100vw;
+      position: relative;
+      font-weight: 100;
+      font-family: Helvetica;
+      background-color: black;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 640px;
+      margin: 4rem auto;
+      box-sizing: border-box;
+      padding: 0 2rem;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 3rem;
+      margin-top: 2rem;
+      line-height: 1.2;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    
+    .scene {
+      position: relative;
+    }
+
+    .canvas-parent {
+      width: 100vw;
+      height: 100vh;
+      touch-action: none;
+      position: sticky;
+      top: 0;
+      z-index: -1;
+    }
+
+    canvas {
+      opacity: 0;
+    }
+
+    .scroller {
+      top: 0vh;
+      width: 100vw;
+      height: 800vh;
+      z-index: 2;
+    }
+
+    .caption {
+      background-color: rgba(0,0,0,0.75);
+      padding: 2rem;
+      width: 340px;
+      position: absolute;
+    }
+
+    .caption p {
+      color: white;
+      line-height: 1.5;
+    }
+
+    #c1 {
+      top: 150vh;
+      left: 15vw;
+    }
+    #c2 {
+      top: 300vh;
+      right: 20vw;
+    }
+    #c3 {
+      top: 450vh;
+      left: 20vw;
+    }
+    #c4 {
+      top: 600vh;
+      right: 10vw;
+    }
+
+    @media (max-width: 1024px) {
+      #c1, #c2, #c3, #c4 {
+        right: auto;
+        left: 5rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class='content'>
+    <h1> This Is an Example of Scroll Controls</h1>
+    <p>
+      Amet id elit et labore cillum elit sit deserunt do reprehenderit occaecat. Enim ipsum sit do sunt aliqua in est.
+      Exercitation consectetur est anim excepteur dolor. Sit qui deserunt proident excepteur aliquip sunt esse ullamco
+      ex ipsum Lorem minim consectetur. Dolor nostrud amet ad irure qui ea. Fugiat cupidatat anim aliqua duis cupidatat
+      cupidatat nisi.
+    </p>
+    <p>
+      Occaecat eu magna id aliqua. Amet cupidatat officia enim eu sunt pariatur tempor consequat culpa ullamco proident.
+      In voluptate ad sit enim ipsum dolore. Aliquip laboris ea non ex incididunt tempor. Ad incididunt esse duis
+      occaecat proident nostrud. Minim non est proident consequat excepteur nulla ad esse exercitation amet id.
+    </p>
+  </div>
+
+  <div class='scene'>
+    <div class='canvas-parent'>
+    </div>
+    <div class='scroller'>
+      <div class='caption' id='c1'>
+        <p>Officia veniam laboris duis deserunt. Quis proident consequat adipisicing anim incididunt.</p>
+      </div>
+      <div class='caption' id='c2'>
+        <p>
+          Irure esse tempor pariatur tempor aliqua aute. Ipsum Lorem laborum cillum pariatur commodo irure laborum
+          exercitation laborum mollit ad proident laboris.
+        </p>
+      </div>
+      <div class='caption' id='c3'>
+        <p>
+          Id pariatur reprehenderit dolore pariatur tempor duis velit id veniam officia. Ea eiusmod anim Lorem duis sunt
+          ut proident qui adipisicing id pariatur laboris.
+        </p>
+      </div>
+      <div class='caption' id='c4'>
+        <p>
+          Id amet ut veniam duis deserunt fugiat enim voluptate non eiusmod ea qui dolore.
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class='content'>
+    <p>
+      Amet id elit et labore cillum elit sit deserunt do reprehenderit occaecat. Enim ipsum sit do sunt aliqua in est.
+      Exercitation consectetur est anim excepteur dolor. Sit qui deserunt proident excepteur aliquip sunt esse ullamco
+      ex ipsum Lorem minim consectetur. Dolor nostrud amet ad irure qui ea. Fugiat cupidatat anim aliqua duis cupidatat
+      cupidatat nisi.
+    </p>
+    <p>
+      Occaecat eu magna id aliqua. Amet cupidatat officia enim eu sunt pariatur tempor consequat culpa ullamco proident.
+      In voluptate ad sit enim ipsum dolore. Aliquip laboris ea non ex incididunt tempor. Ad incididunt esse duis
+      occaecat proident nostrud. Minim non est proident consequat excepteur nulla ad esse exercitation amet id.
+    </p>
+    <p>
+      Dolor consectetur sint excepteur officia quis do mollit commodo deserunt dolor adipisicing. Minim adipisicing
+      aliqua ipsum voluptate elit amet do do ullamco Lorem Lorem consectetur. Amet cillum do laboris nulla.
+    </p>
+    <p>
+      Amet id elit et labore cillum elit sit deserunt do reprehenderit occaecat. Enim ipsum sit do sunt aliqua in est.
+      Exercitation consectetur est anim excepteur dolor. Sit qui deserunt proident excepteur aliquip sunt esse ullamco
+      ex ipsum Lorem minim consectetur. Dolor nostrud amet ad irure qui ea. Fugiat cupidatat anim aliqua duis cupidatat
+      cupidatat nisi.
+    </p>
+  </div>
+  <script type='module-shim' src='script.js'></script>
+</body>
+
+</html>

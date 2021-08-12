@@ -446,6 +446,7 @@ export class CameraRig extends EventDispatcher {
       }
       const onComplete = (): void => {
         this.inTransit = false
+        this.unpackTransform()
         this.dispatchEvent({ type: 'CameraMoveEnd' } as CameraMoveEndEvent)
       }
       TweenMax.to(currentValues, {

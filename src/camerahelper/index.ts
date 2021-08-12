@@ -36,6 +36,7 @@ export class CameraHelper {
   private animationClip: AnimationClip
   private isPlaying: boolean
   private playStartTime: number
+  private useSlerp = true
 
   constructor(rig: CameraRig, controls: FreeMovementControls, canvas: HTMLCanvasElement, canvasParent?: HTMLElement) {
     this.rig = rig
@@ -110,7 +111,7 @@ export class CameraHelper {
 
   goToPoi(index: number): void {
     const poi = this.pois[index]
-    this.rig.flyTo(poi.position, poi.quaternion, poi.duration, poi.ease)
+    this.rig.flyTo(poi.position, poi.quaternion, poi.duration, poi.ease, this.useSlerp)
   }
 
   createClip(): void {
@@ -131,6 +132,10 @@ export class CameraHelper {
         px: p1.position.x,
         py: p1.position.y,
         pz: p1.position.z,
+        qx: p1.quaternion.x,
+        qy: p1.quaternion.y,
+        qz: p1.quaternion.z,
+        qw: p1.quaternion.w,
         slerpAmount: 0,
       }
 
@@ -138,6 +143,10 @@ export class CameraHelper {
         px: p2.position.x,
         py: p2.position.y,
         pz: p2.position.z,
+        qx: p2.quaternion.x,
+        qy: p2.quaternion.y,
+        qz: p2.quaternion.z,
+        qw: p2.quaternion.w,
         slerpAmount: 1,
         duration: p2.duration,
         ease: p2.ease,
@@ -149,7 +158,11 @@ export class CameraHelper {
         const lerpAmount = p2.duration * (j / framesPerPoi)
         times.push(tweenStartTime + lerpAmount)
         tween.seek(lerpAmount)
-        tmpQuaternion.slerpQuaternions(p1.quaternion, p2.quaternion, values.slerpAmount)
+        if (this.useSlerp) {
+          tmpQuaternion.slerpQuaternions(p1.quaternion, p2.quaternion, values.slerpAmount)
+        } else {
+          tmpQuaternion.set(values.qx, values.qy, values.qz, values.qw)
+        }
         tmpPosition.set(values.px, values.py, values.pz)
         tmpQuaternion.toArray(quaternionValues, quaternionValues.length)
         tmpPosition.toArray(positionValues, positionValues.length)
@@ -277,7 +290,7 @@ export class CameraHelper {
         this.removePoi(parseInt(index))
       } else if (event.target.classList.contains(DOMClass.duration)) {
         this.updatePoi(parseInt(index), { duration: parseFloat((<HTMLInputElement>event.target).value) })
-      } else if (event.target.classList.contains(DOMClass.remove)) {
+      } else if (event.target.classList.contains(DOMClass.ease)) {
         this.updatePoi(parseInt(index), { ease: (<HTMLSelectElement>event.target).value })
       } else if (event.target.classList.contains(DOMClass.moveUp)) {
         this.movePoi(parseInt(index), -1)
@@ -341,21 +354,25 @@ export class CameraHelper {
 
       const btnRemove = document.createElement('button')
       btnRemove.classList.add(DOMClass.remove)
+      btnRemove.title = 'Remove'
       btnRemove.dataset.index = `${index}`
       btnRemove.innerText = 'x'
 
       const btnVisit = document.createElement('button')
       btnVisit.classList.add(DOMClass.visit)
+      btnVisit.title = 'Visit'
       btnVisit.dataset.index = `${index}`
       btnVisit.innerHTML = '&rarr;'
 
       const btnMoveUp = document.createElement('button')
       btnMoveUp.classList.add(DOMClass.moveUp)
+      btnMoveUp.title = 'Move up'
       btnMoveUp.dataset.index = `${index}`
       btnMoveUp.innerHTML = '&uarr;'
 
       const btnMoveDown = document.createElement('button')
       btnMoveDown.classList.add(DOMClass.moveDown)
+      btnMoveDown.title = 'Move down'
       btnMoveDown.dataset.index = `${index}`
       btnMoveDown.innerHTML = '&darr;'
 

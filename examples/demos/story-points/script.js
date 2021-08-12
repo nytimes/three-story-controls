@@ -19,7 +19,7 @@ const prevBtn = document.querySelector('.prev')
 const caption = document.querySelector('.caption p')
 
 const scene = new Scene()
-const camera = new PerspectiveCamera(75, canvasParent.clientWidth / canvasParent.clientHeight, 0.1, 1000)
+const camera = new PerspectiveCamera(45, canvasParent.clientWidth / canvasParent.clientHeight, .1, 10000)
 const renderer = new WebGLRenderer()
 renderer.setSize(canvasParent.clientWidth, canvasParent.clientHeight)
 canvasParent.appendChild(renderer.domElement)
@@ -81,7 +81,7 @@ const cameraPositions = storyPoints.map((item) => {
   mesh.position.copy(item.meshPosition)
   scene.add(mesh)
 
-  const lookAtPosition = new Vector3().setFromSphericalCoords(10, item.phi, item.theta).add(mesh.position)
+  const lookAtPosition = new Vector3().setFromSphericalCoords(15, item.phi, item.theta).add(mesh.position)
   const mat = new Matrix4().lookAt(lookAtPosition, mesh.position, new Vector3(0, 1, 0))
   const lookAtOrientation = new Quaternion().setFromRotationMatrix(mat)
 

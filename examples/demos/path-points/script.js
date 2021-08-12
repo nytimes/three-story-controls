@@ -2,6 +2,7 @@ import {
   Scene,
   PerspectiveCamera,
   WebGLRenderer,
+  AnimationClip,
   GridHelper,
   ConeGeometry,
   MeshPhongMaterial,
@@ -9,12 +10,14 @@ import {
   Vector3,
   HemisphereLight,
 } from 'three'
-import { CameraRig, FreeMovementControls, CameraHelper } from 'three-story-controls'
+import { CameraRig, PathPointsControls, ThreeDOFControls } from 'three-story-controls'
+import cameraData from './camera-control.js'
 
 const canvasParent = document.querySelector('.canvas-parent')
+const caption = document.querySelector('.caption p')
 
 const scene = new Scene()
-const camera = new PerspectiveCamera(45, canvasParent.clientWidth / canvasParent.clientHeight, .1, 10000)
+const camera = new PerspectiveCamera(45, canvasParent.clientWidth / canvasParent.clientHeight, 0.1, 10000)
 const renderer = new WebGLRenderer()
 renderer.setSize(canvasParent.clientWidth, canvasParent.clientHeight)
 canvasParent.appendChild(renderer.domElement)
@@ -26,13 +29,35 @@ const grid = new GridHelper(100, 50)
 grid.position.set(0, -5, 0)
 scene.add(grid)
 
-const rig = new CameraRig(camera, scene)
-const controls = new FreeMovementControls(rig, {
-  domElement: canvasParent,
+const pois = cameraData.pois.map((item, index) => {
+  return {
+    frame: index * 10,
+    caption: `This is caption for point #${index + 1}`,
+  }
 })
-controls.enable()
 
-const cameraHelper = new CameraHelper(rig, controls, renderer.domElement)
+const rig = new CameraRig(camera, scene)
+const clip = AnimationClip.parse(cameraData.animationClip)
+rig.setAnimationClip(clip)
+rig.setAnimationTime(0)
+caption.innerText = pois[0].caption
+
+const controls = new PathPointsControls(rig, pois)
+controls.addEventListener('update', (event) => {
+  if (event.progress > 0.8) {
+    caption.innerText = pois[event.upcomingIndex].caption
+  }
+})
+
+const controls3dof = new ThreeDOFControls(rig, {
+  panFactor: Math.PI / 10,
+  tiltFactor: Math.PI / 10,
+  truckFactor: 0,
+  pedestalFactor: 0,
+})
+
+controls.enable()
+controls3dof.enable()
 
 const cones = [
   {
@@ -41,7 +66,7 @@ const cones = [
   },
   {
     meshPosition: new Vector3(20, 0, -45),
-    color: 0xffff00, 
+    color: 0xffff00,
   },
   {
     meshPosition: new Vector3(45, 0, 0),
@@ -69,10 +94,18 @@ cones.forEach((item) => {
 })
 
 function render(t) {
-  controls.update(t)
-  renderer.render(scene, camera)
-  cameraHelper.update(t)
   window.requestAnimationFrame(render)
+  if (rig.hasAnimation) {
+    controls.update(t)
+    controls3dof.update(t)
+  }
+  renderer.render(scene, camera)
 }
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth, window.innerHeight)
+})
 
 render()

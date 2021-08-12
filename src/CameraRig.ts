@@ -9,6 +9,7 @@ import {
   AnimationClip,
   EventDispatcher,
   Euler,
+  LoopOnce,
 } from 'three'
 
 import { TweenMax } from 'gsap'
@@ -390,8 +391,11 @@ export class CameraRig extends EventDispatcher {
     if (translationObjectName) this.animationTranslationObjectName = translationObjectName
     if (rotationObjectName) this.animationRotationObjectName = rotationObjectName
     this.hasAnimation = true
+    // hack. threejs skips last frame when seek time = clip duration
+    this.animationClip.duration += 0.01
     this.mixer = new AnimationMixer(this.body)
     const action = this.mixer.clipAction(this.animationClip)
+    action.clampWhenFinished = true
     action.play()
   }
 

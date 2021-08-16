@@ -19,11 +19,11 @@
 
 
 ## Demos
-* [Camera Helper](https://ubiquitous-fiesta-c641b86c.pages.github.io/examples/demos/camera-helper/index.html): Helper tool to create camera animations and/or points of interest that can be exported and used by the control schemes.
-* [FreeMovement controls](https://ubiquitous-fiesta-c641b86c.pages.github.io/examples/demos/freemove/index.html): First-person controls to move freely around the scene
-* [Scroll controls](https://ubiquitous-fiesta-c641b86c.pages.github.io/examples/demos/scroll-controls/index.html): Scroll through the page to scrub through a camera animation
-* [StoryPoint controls](https://ubiquitous-fiesta-c641b86c.pages.github.io/examples/demos/story-points/index.html): Transition between specific points in the scene
-* [PathPoint controls](https://ubiquitous-fiesta-c641b86c.pages.github.io/examples/demos/path-points/index.html): Transition between specific frames of a camera animation
+* [Camera Helper](https://nytimes.github.io/three-story-controls/examples/demos/camera-helper/index.html): Helper tool to create camera animations and/or points of interest that can be exported and used by the control schemes.
+* [FreeMovement controls](https://nytimes.github.io/three-story-controls/examples/demos/freemove/index.html): First-person controls to move freely around the scene
+* [Scroll controls](https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls/index.html): Scroll through the page to scrub through a camera animation
+* [StoryPoint controls](https://nytimes.github.io/three-story-controls/examples/demos/story-points/index.html): Transition between specific points in the scene
+* [PathPoint controls](https://nytimes.github.io/three-story-controls/examples/demos/path-points/index.html): Transition between specific frames of a camera animation
 
 ---
 
@@ -163,7 +163,7 @@ You could build your own control schemes using a combination of `Adaptor`s and t
 ---
 
 ## API and demos
-API documentation lives [here](docs/controls.md), and demos can be viewed [here](https://ubiquitous-fiesta-c641b86c.pages.github.io/). Code for the demos lives in [`examples/demos`](examples/demos)
+API documentation lives [here](docs/controls.md), and demos can be viewed [here](https://nytimes.github.io/three-story-controls/). Code for the demos lives in [`examples/demos`](examples/demos)
 
 ---
 

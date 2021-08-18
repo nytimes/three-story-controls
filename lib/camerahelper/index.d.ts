@@ -5,10 +5,16 @@ import './index.css';
  * A helper tool for creating camera animation paths and/or choosing camera look-at positions for points of interest in a scene
  *
  * @remarks
+ * A helper tool for creating camera animation paths and/or choosing camera look-at positions for points of interest in a scene.
+ *
  * The `CameraHelper` can be set up with any scene along with {@link three-story-controls#FreeMovementControls | FreeMovementControls}.
- *  It renders as an overlay with functionality to add/remove/reorders points of interest, and create an animation path between them.
+ *
+ * It renders as an overlay with functionality to add/remove/reorders points of interest, and create an animation path between them.
  *  Each saved camera position is displayed with an image on the `CameraHelper` panel.
- *  The data can be exported as a JSON file that can then be used with different control schemes.
+ *
+ * The data can be exported as a JSON file that can then be used with different control schemes.
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/camera-helper | DEMO }
  *
  * @example
  * Here's an example of initializing the CameraHelper

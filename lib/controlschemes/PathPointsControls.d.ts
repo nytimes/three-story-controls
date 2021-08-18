@@ -27,6 +27,8 @@ export interface PathPointsControlsProps {
  * See {@link three-story-controls#PathPointsControlsProps} for all properties that can be passed to the constructor.
  * See {@link three-story-controls#PathPointMarker} for POI properties
  * See {@link three-story-controls#UpdatePOIsEvent} and {@link three-story-controls#ExitPOIsEvent} for emitted event signatures.
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/path-points/ | DEMO }
  * @example
  * ```js
  *

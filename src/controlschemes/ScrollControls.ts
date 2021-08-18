@@ -62,6 +62,9 @@ const mapRange = (number, inMin, inMax, outMin, outMax): number => {
  * Control scheme to scrub through the CameraRig's `AnimationClip` based on the scroll of a DOM Element
  * @remarks
  * See {@link three-story-controls#ScrollControlsProps} for all properties that can be passed to the constructor.
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls/ | DEMO }
+ *
  * @example
  * ```js
  * const scene = new Scene()

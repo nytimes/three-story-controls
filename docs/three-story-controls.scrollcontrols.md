@@ -17,6 +17,8 @@ export declare class ScrollControls implements BaseControls
 
 See [ScrollControlsProps](./three-story-controls.scrollcontrolsprops.md) for all properties that can be passed to the constructor.
 
+[DEMO](https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls/)
+
 ## Example
 
 

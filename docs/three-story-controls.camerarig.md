@@ -33,7 +33,7 @@ Instead of specifying the axis to rotate/translate the camera, [CameraAction](./
 
 Translations will be applied to the 'body' of the rig, and rotations to the 'eyes'. If an animation clip is provided, or the camera is tweened to a specific location, the rotations will be applied to the 'head', thus leaving the 'eyes' free to 'look around' from this base position.
 
-Additionally, the default setup assumes that the rig will move forward/backward (`Dolly`<!-- -->) in the direction the camera is panned to. This can be configured through [translateAlong property](./three-story-controls.camerarig.translatealong.md)<!-- -->. It can also be overwritten by providing the component name to the [do() method](./three-story-controls.camerarig.do.md)<!-- -->, see  for an example.
+Additionally, the default setup assumes that the rig will move forward/backward (`Dolly`<!-- -->) in the direction the camera is panned to. This can be configured through [translateAlong property](./three-story-controls.camerarig.translatealong.md)<!-- -->. It can also be overwritten by providing the component name to the [do() method](./three-story-controls.camerarig.do.md)<!-- -->, see [ThreeDOFControls implementation](https://github.com/nytimes/three-story-controls/blob/main/src/controlschemes/ThreeDOFControls.ts#L96) for an example.
 
 To move the rig along a specified path, use the [setAnimationClip() method](./three-story-controls.camerarig.setanimationclip.md)<!-- -->, and set the names for the `Translation` and `Rotation` objects to match those of the clip. The clip should have a `VectorKeyframeTrack` for the outer position/translation object, and a `QuaternionKeyframeTrack` for the inner orientation/rotation object.
 

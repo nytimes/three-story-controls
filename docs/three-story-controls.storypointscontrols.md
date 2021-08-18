@@ -17,7 +17,9 @@ export declare class StoryPointsControls extends EventDispatcher implements Base
 
 ## Remarks
 
-See [StoryPointsControlsProps](./three-story-controls.storypointscontrolsprops.md) for all properties that can be passed to the constructor. See [StoryPointMarker](./three-story-controls.storypointmarker.md) for POI properties
+See [StoryPointsControlsProps](./three-story-controls.storypointscontrolsprops.md) for all properties that can be passed to the constructor. See [StoryPointMarker](./three-story-controls.storypointmarker.md) for POI properties.
+
+[DEMO](https://nytimes.github.io/three-story-controls/examples/demos/story-points/)
 
 ## Example
 

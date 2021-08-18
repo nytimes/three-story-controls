@@ -202,7 +202,7 @@ const ActionMappingByUpAxis = {
  *
  * Additionally, the default setup assumes that the rig will move forward/backward (`Dolly`) in the direction the camera is panned to.
  * This can be configured through {@link CameraRig.translateAlong | translateAlong property}.
- * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see {@link src/controlschemes/ThreeDOFControls.ts} for an example.
+ * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see {@link https://github.com/nytimes/three-story-controls/blob/main/src/controlschemes/ThreeDOFControls.ts#L96 | ThreeDOFControls implementation} for an example.
  *
  * To move the rig along a specified path, use the {@link CameraRig.setAnimationClip | setAnimationClip() method},
  *  and set the names for the `Translation` and `Rotation` objects to match those of the clip. The clip should have a `VectorKeyframeTrack` for the outer position/translation object,
@@ -1100,8 +1100,11 @@ const defaultProps$4 = {
 /**
  * Control scheme to move the camera with arrow/WASD keys and mouse wheel; and rotate the camera with click-and-drag events.
  * @remarks
- *  Note: CSS property `touch-action: none` will probably be needed on listener element
+ *  Note: CSS property `touch-action: none` will probably be needed on listener element.
+ *
  * See {@link three-story-controls#FreeMovementControlsProps} for all properties that can be passed to the constructor.
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/freemove/index.html | DEMO }
  * @example
  * ```js
  * const scene = new Scene()
@@ -1212,6 +1215,9 @@ const mapRange = (number, inMin, inMax, outMin, outMax) => {
  * Control scheme to scrub through the CameraRig's `AnimationClip` based on the scroll of a DOM Element
  * @remarks
  * See {@link three-story-controls#ScrollControlsProps} for all properties that can be passed to the constructor.
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls/ | DEMO }
+ *
  * @example
  * ```js
  * const scene = new Scene()
@@ -1313,7 +1319,10 @@ const defaultProps$2 = {
  * Control scheme to transition the camera between given points in world space.
  * @remarks
  * See {@link three-story-controls#StoryPointsControlsProps} for all properties that can be passed to the constructor.
- * See {@link three-story-controls#StoryPointMarker} for POI properties
+ * See {@link three-story-controls#StoryPointMarker} for POI properties.
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/story-points/ | DEMO }
+ *
  * @example
  * ```js
  *
@@ -1458,6 +1467,8 @@ const defaultProps$1 = {
  * See {@link three-story-controls#PathPointsControlsProps} for all properties that can be passed to the constructor.
  * See {@link three-story-controls#PathPointMarker} for POI properties
  * See {@link three-story-controls#UpdatePOIsEvent} and {@link three-story-controls#ExitPOIsEvent} for emitted event signatures.
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/path-points/ | DEMO }
  * @example
  * ```js
  *
@@ -1608,7 +1619,13 @@ const defaultProps = {
  * Control scheme for slight rotation and translation movement in response to mouse movements (designed to be used in conjunction with other control schemes)
  * @remarks
  * Note: CSS property `touch-action: none` will probably be needed on listener element
+ *
  * See {@link three-story-controls#ThreeDOFControlsProps} for all properties that can be passed to the constructor.
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/story-points/ | DEMO w/ story points }
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls/ | DEMO w/ scroll controls}
+ *
  * @example
  * ```js
  * const scene = new Scene()

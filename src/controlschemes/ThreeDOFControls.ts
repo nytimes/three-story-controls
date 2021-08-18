@@ -34,7 +34,13 @@ const defaultProps: ThreeDOFControlsProps = {
  * Control scheme for slight rotation and translation movement in response to mouse movements (designed to be used in conjunction with other control schemes)
  * @remarks
  * Note: CSS property `touch-action: none` will probably be needed on listener element
+ *
  * See {@link three-story-controls#ThreeDOFControlsProps} for all properties that can be passed to the constructor.
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/story-points/ | DEMO w/ story points }
+ *
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls/ | DEMO w/ scroll controls}
+ *
  * @example
  * ```js
  * const scene = new Scene()

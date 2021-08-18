@@ -15,7 +15,11 @@ export declare class FreeMovementControls implements BaseControls
 
 ## Remarks
 
-Note: CSS property `touch-action: none` will probably be needed on listener element See [FreeMovementControlsProps](./three-story-controls.freemovementcontrolsprops.md) for all properties that can be passed to the constructor.
+Note: CSS property `touch-action: none` will probably be needed on listener element.
+
+See [FreeMovementControlsProps](./three-story-controls.freemovementcontrolsprops.md) for all properties that can be passed to the constructor.
+
+[DEMO](https://nytimes.github.io/three-story-controls/examples/demos/freemove/index.html)
 
 ## Example
 

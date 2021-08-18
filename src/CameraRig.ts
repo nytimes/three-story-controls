@@ -147,7 +147,7 @@ const ActionMappingByUpAxis = {
  *
  * Additionally, the default setup assumes that the rig will move forward/backward (`Dolly`) in the direction the camera is panned to.
  * This can be configured through {@link CameraRig.translateAlong | translateAlong property}.
- * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see {@link src/controlschemes/ThreeDOFControls.ts} for an example.
+ * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see {@link https://github.com/nytimes/three-story-controls/blob/main/src/controlschemes/ThreeDOFControls.ts#L96 | ThreeDOFControls implementation} for an example.
  *
  * To move the rig along a specified path, use the {@link CameraRig.setAnimationClip | setAnimationClip() method},
  *  and set the names for the `Translation` and `Rotation` objects to match those of the clip. The clip should have a `VectorKeyframeTrack` for the outer position/translation object,

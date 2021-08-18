@@ -27,11 +27,11 @@
 
 
 ## Demos
-* [Camera Helper](https://nytimes.github.io/three-story-controls/examples/demos/camera-helper/index.html): Helper tool to create camera animations and/or points of interest that can be exported and used by the control schemes.
-* [FreeMovement controls](https://nytimes.github.io/three-story-controls/examples/demos/freemove/index.html): First-person controls to move freely around the scene
-* [Scroll controls](https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls/index.html): Scroll through the page to scrub through a camera animation
-* [StoryPoint controls](https://nytimes.github.io/three-story-controls/examples/demos/story-points/index.html): Transition between specific points in the scene
-* [PathPoint controls](https://nytimes.github.io/three-story-controls/examples/demos/path-points/index.html): Transition between specific frames of a camera animation
+* [Camera Helper](https://nytimes.github.io/three-story-controls/examples/demos/camera-helper): Helper tool to create camera animations and/or points of interest that can be exported and used by the control schemes.
+* [FreeMovement controls](https://nytimes.github.io/three-story-controls/examples/demos/freemove): First-person controls to move freely around the scene.
+* [Scroll + 3DOF controls](https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls): Scroll through the page to scrub through a camera animation. Slightly rotate the camera with mouse movements. 
+* [StoryPoint + 3DOF controls](https://nytimes.github.io/three-story-controls/examples/demos/story-points): Transition between specific points in the scene. Slightly rotate the camera with mouse movements. 
+* [PathPoint controls](https://nytimes.github.io/three-story-controls/examples/demos/path-points): Transition between specific frames of a camera animation.
 
 <br> 
 

@@ -15,7 +15,13 @@ export declare class ThreeDOFControls implements BaseControls
 
 ## Remarks
 
-Note: CSS property `touch-action: none` will probably be needed on listener element See [ThreeDOFControlsProps](./three-story-controls.threedofcontrolsprops.md) for all properties that can be passed to the constructor.
+Note: CSS property `touch-action: none` will probably be needed on listener element
+
+See [ThreeDOFControlsProps](./three-story-controls.threedofcontrolsprops.md) for all properties that can be passed to the constructor.
+
+[DEMO w/ story points](https://nytimes.github.io/three-story-controls/examples/demos/story-points/)
+
+[DEMO w/ scroll controls](https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls/)
 
 ## Example
 

@@ -81,13 +81,13 @@ const cameraPositions = storyPoints.map((item) => {
   mesh.position.copy(item.meshPosition)
   scene.add(mesh)
 
-  const lookAtPosition = new Vector3().setFromSphericalCoords(15, item.phi, item.theta).add(mesh.position)
-  const mat = new Matrix4().lookAt(lookAtPosition, mesh.position, new Vector3(0, 1, 0))
-  const lookAtOrientation = new Quaternion().setFromRotationMatrix(mat)
+  const position = new Vector3().setFromSphericalCoords(15, item.phi, item.theta).add(mesh.position)
+  const mat = new Matrix4().lookAt(position, mesh.position, new Vector3(0, 1, 0))
+  const quaternion = new Quaternion().setFromRotationMatrix(mat)
 
   return {
-    lookAtPosition,
-    lookAtOrientation,
+    position,
+    quaternion,
   }
 })
 

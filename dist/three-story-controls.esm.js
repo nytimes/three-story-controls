@@ -1225,11 +1225,12 @@ const mapRange = (number, inMin, inMax, outMin, outMax) => {
  *
  * gltfLoader.load(cameraPath, (gltf) => {
  *  cameraRig.setAnimationClip(gltf.animations[0])
+ *  cameraRig.setAnimationTime(0)
  *  controls.enable()
  * })
  *
+ * // render loop
  * function animate() {
- *  // render loop
  *  controls.update()
  * }
  * ```
@@ -1309,8 +1310,8 @@ const defaultProps$2 = {
  * ```js
  *
  * const pois = [
- *  { lookAtPosition: new Vector3(...), lookAtOrientation: new Quaternion(...) },
- *  { lookAtPosition: new Vector3(...), lookAtOrientation: new Quaternion(...) },
+ *  { position: new Vector3(...), quaternion: new Quaternion(...) },
+ *  { position: new Vector3(...), quaternion: new Quaternion(...) },
  * ]
  * const scene = new Scene()
  * const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -1319,13 +1320,10 @@ const defaultProps$2 = {
  *
  * controls.enable()
  * controls.goToPOI(0)
- * controls.addEventListener('ExitPOIs', (e) => {
- *  alert(`Exit story points from _${e.exitFrom}_ event fired`)
- * })
  *
- * // assuming some 'nextBtn' and 'prevBtn' dom elements have been created
- * nextBtn.on('click', () => controls.nextPOI() )
- * prevBtn.on('click', () => controls.prevPOI() )
+ * // Assuming DOM elements with classes 'nextBtn' and 'prevBtn' have been created
+ * document.querySelector('.nextBtn').on('click', () => controls.nextPOI() )
+ * document.querySelector('.prevBtn').on('click', () => controls.prevPOI() )
  * ```
  */
 class StoryPointsControls extends EventDispatcher {
@@ -1381,7 +1379,7 @@ class StoryPointsControls extends EventDispatcher {
     goToPOI(index) {
         this.upcomingIndex = index;
         const poi = this.pois[this.upcomingIndex];
-        this.cameraRig.flyTo(poi.lookAtPosition, poi.lookAtOrientation, poi.duration, poi.ease);
+        this.cameraRig.flyTo(poi.position, poi.quaternion, poi.duration, poi.ease);
     }
     enable() {
         if (this.useKeyboard) {
@@ -1447,8 +1445,11 @@ const defaultProps$1 = {
 /**
  * Control scheme to transition the camera between specific points (frames) along a path specified through an `AnimationClip`.
  * @remarks
- * Note: CSS property `touch-action: none` will probably be needed on listener element
+ * Note: CSS property `touch-action: none` will probably be needed on listener element.
+ *
  * See {@link three-story-controls#PathPointsControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#PathPointMarker} for POI properties
+ * See {@link three-story-controls#UpdatePOIsEvent} and {@link three-story-controls#ExitPOIsEvent} for emitted event signatures.
  * @example
  * ```js
  *
@@ -1459,12 +1460,18 @@ const defaultProps$1 = {
  *
  * gltfLoader.load(cameraPath, (gltf) => {
  *  camera = gltf.cameras[0]
- *  cameraRig = new CameraRig(gltf.cameras[0], scene, { animationClip: gltf.animations[0] })
+ *  cameraRig = new CameraRig(camera, scene)
+ *  cameraRig.setAnimationClip(gltf.animations[0])
+ *  cameraRig.setAnimationTime(0)
  *  controls = new PathPointsControls(cameraRig, pois)
- *  pois[0].show(1)
  *  controls.enable()
  *  controls.addEventListener('ExitPOIs', (e) => {
- *    alert(`Exit path points from _${e.exitFrom}_ event fired`)
+ *    // e.exitFrom will be either 'start' or 'end'
+ *  })
+ *  controls.addEventListener('update', (e) => {
+ *    // e.currentIndex will be the index of the starting poi
+ *    // e.upcomingIndex will be the index of the upcoming poi
+ *    // e.progress will be a number 0-1 indicating progress of the transition
  *  })
  * })
  * ```
@@ -1602,8 +1609,9 @@ const defaultProps = {
  * const controls = new ThreeDOFControls(cameraRig)
  *
  * controls.enable()
+ *
+ * // render loop
  * function animate(t) {
- *  // render loop
  *  controls.update(t)
  * }
  * ```

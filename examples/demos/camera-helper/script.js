@@ -14,7 +14,7 @@ import { CameraRig, FreeMovementControls, CameraHelper } from 'three-story-contr
 const canvasParent = document.querySelector('.canvas-parent')
 
 const scene = new Scene()
-const camera = new PerspectiveCamera(45, canvasParent.clientWidth / canvasParent.clientHeight, .1, 10000)
+const camera = new PerspectiveCamera(45, canvasParent.clientWidth / canvasParent.clientHeight, 0.1, 10000)
 const renderer = new WebGLRenderer()
 renderer.setSize(canvasParent.clientWidth, canvasParent.clientHeight)
 canvasParent.appendChild(renderer.domElement)
@@ -41,7 +41,7 @@ const cones = [
   },
   {
     meshPosition: new Vector3(20, 0, -45),
-    color: 0xffff00, 
+    color: 0xffff00,
   },
   {
     meshPosition: new Vector3(45, 0, 0),

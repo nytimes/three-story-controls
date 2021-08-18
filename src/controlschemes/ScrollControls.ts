@@ -83,11 +83,12 @@ const mapRange = (number, inMin, inMax, outMin, outMax): number => {
  *
  * gltfLoader.load(cameraPath, (gltf) => {
  *  cameraRig.setAnimationClip(gltf.animations[0])
+ *  cameraRig.setAnimationTime(0)
  *  controls.enable()
  * })
  *
+ * // render loop
  * function animate() {
- *  // render loop
  *  controls.update()
  * }
  * ```

@@ -6,7 +6,7 @@ export interface BaseControls {
 
 /**
  * Event: Fired when attempting to go the the next/previous point of interest, but none exists
- * Fired on `StoryPointsControls` and `PathPointsControls`
+ * Fired on `StoryPointsControls` and `PathPointsControls`. `controls.addEventListener('ExitPOIs', ...)`
  * */
 export interface ExitPOIsEvent {
   type: 'ExitPOIs'
@@ -14,7 +14,7 @@ export interface ExitPOIsEvent {
 }
 
 /**
- * Event: Fired when transitioning between points of interest. Fired on `StoryPointsControls` and `PathPointsControls`
+ * Event: Fired when transitioning between points of interest. Fired on `StoryPointsControls` and `PathPointsControls`. `controls.addEventListener('update', ...)`
  * */
 export interface UpdatePOIsEvent {
   type: 'update'

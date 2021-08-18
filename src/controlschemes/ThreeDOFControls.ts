@@ -43,8 +43,9 @@ const defaultProps: ThreeDOFControlsProps = {
  * const controls = new ThreeDOFControls(cameraRig)
  *
  * controls.enable()
+ *
+ * // render loop
  * function animate(t) {
- *  // render loop
  *  controls.update(t)
  * }
  * ```

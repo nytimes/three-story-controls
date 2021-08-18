@@ -77,6 +77,24 @@
       background-color: rgb(184, 184, 184);
       font-family: sans-serif;
     }
+
+    #button {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      padding: 12px;
+      border-radius: 50%;
+      margin-bottom: 0px;
+      background-color: #FFF;
+      opacity: .9;
+      z-index: 999;
+      box-shadow: 0 0 4px rgb(0 0 0 / 15%);
+    }
+
+    @media (max-width:480px) {
+      .caption { display: none; }
+      .info { width: 100%; box-sizing: border-box; }
+    }
   </style>
 </head>
 
@@ -85,7 +103,7 @@
   </div>
 
   <p class='info'>
-    Use the mouse wheel to transition between points. (or arrow keys)
+    Use the mouse wheel/swipe to transition between points. (or arrow keys)
   </p>
 
   <div class='caption'>
@@ -93,6 +111,9 @@
     </p>
   </div>
 
+  <a id="button" target="_blank" href="https://github.com/nytimes/three-story-controls/tree/main/examples/demos/path-points" title="View source code for demo">
+    <img src="../ic_code_black_24dp.svg"/>
+  </a>
   <script type='module-shim' src='script.js'></script>
 </body>
 

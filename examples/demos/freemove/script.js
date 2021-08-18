@@ -12,6 +12,7 @@ canvasParent.appendChild(renderer.domElement)
 const rig = new CameraRig(camera, scene)
 const controls = new FreeMovementControls(rig, {
   domElement: canvasParent,
+  pointerScaleFactor: 15,
 })
 controls.enable()
 
@@ -24,5 +25,11 @@ function render(t) {
   controls.update(t)
   renderer.render(scene, camera)
 }
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth, window.innerHeight)
+})
 
 render()

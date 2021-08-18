@@ -112,6 +112,26 @@
       }
     }
 
+    @media (max-width:480px) {
+      #c1, #c2, #c3, #c4 { 
+        width: 100%; 
+        box-sizing: border-box; 
+        left: 0;
+      }
+    }
+
+    #button {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      padding: 12px;
+      border-radius: 50%;
+      margin-bottom: 0px;
+      background-color: #FFF;
+      opacity: .9;
+      z-index: 999;
+      box-shadow: 0 0 4px rgb(0 0 0 / 15%);
+    }
   </style>
 </head>
 
@@ -183,6 +203,11 @@
       cupidatat nisi.
     </p>
   </div>
+
+  <a id="button" target="_blank" href="https://github.com/nytimes/three-story-controls/tree/main/examples/demos/scroll-controls" title="View source code for demo">
+    <img src="../ic_code_black_24dp.svg"/>
+  </a>
+
   <script type='module-shim' src='script.js'></script>
 </body>
 

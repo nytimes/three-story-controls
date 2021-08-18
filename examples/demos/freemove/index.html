@@ -32,7 +32,7 @@
       touch-action: none;
     }
 
-    p {
+    .info {
       position: fixed;
       top: 0;
       right: 0;
@@ -43,6 +43,23 @@
       background-color: white;
       color: black;
     }
+
+    #button {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      padding: 12px;
+      border-radius: 50%;
+      margin-bottom: 0px;
+      background-color: #FFF;
+      opacity: .9;
+      z-index: 999;
+      box-shadow: 0 0 4px rgb(0 0 0 / 15%);
+    }
+
+    @media (max-width:480px) {
+      .info { width: 100%; box-sizing: border-box; }
+    }
   </style>
 </head>
 
@@ -50,10 +67,13 @@
   <div class='canvas-parent'>
   </div>
 
-  <p>
-    Use arrow/WASD keys or mouse wheel/trackpad to move around, and click and drag to turn/rotate the camera. U/N keys raise/lowers the camera. 
+  <p class='info'>
+    Use arrow/WASD keys or mouse wheel/trackpad (or swipe with 2 fingers) to move around, and click and drag (/ 1 finger swipe) to turn/rotate the camera. U/N keys raise/lowers the camera. 
   </p>
 
+  <a id="button" target="_blank" href="https://github.com/nytimes/three-story-controls/tree/main/examples/demos/freemove" title="View source code for demo">
+    <img src="../ic_code_black_24dp.svg"/>
+  </a>
   <script type='module-shim' src='script.js'></script>
 </body>
 

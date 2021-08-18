@@ -77,6 +77,7 @@ The library depends on [three.js](https://threejs.org/) r129 and [gsap](https://
 
 ### 1. ES Module
 Download [`dist/three-story-controls.esm.min.js`](dist/three-story-controls.esm.min.js) and use an `importmap-shim` to import the dependencies. See [here](examples/installation/es-module) for a full example. The [demos](examples/demos) also use this method of installation:
+  
   #### **`index.html`**
   ```html
   <script async src="https://unpkg.com/es-module-shims@0.11.1/dist/es-module-shims.js"></script>
@@ -91,6 +92,7 @@ Download [`dist/three-story-controls.esm.min.js`](dist/three-story-controls.esm.
   </script>
   <script src='index.js' type='module-shim'></script>
   ```
+  
   #### **`index.js`**
   ```javascript
   import { Scene, PerspectiveCamera } from 'three'

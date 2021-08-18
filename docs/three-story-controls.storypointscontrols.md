@@ -25,8 +25,8 @@ See [StoryPointsControlsProps](./three-story-controls.storypointscontrolsprops.m
 ```js
 
 const pois = [
- { lookAtPosition: new Vector3(...), lookAtOrientation: new Quaternion(...) },
- { lookAtPosition: new Vector3(...), lookAtOrientation: new Quaternion(...) },
+ { position: new Vector3(...), quaternion: new Quaternion(...) },
+ { position: new Vector3(...), quaternion: new Quaternion(...) },
 ]
 const scene = new Scene()
 const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -35,13 +35,10 @@ const controls = new StoryPointsControls(cameraRig, pois)
 
 controls.enable()
 controls.goToPOI(0)
-controls.addEventListener('ExitPOIs', (e) => {
- alert(`Exit story points from _${e.exitFrom}_ event fired`)
-})
 
-// assuming some 'nextBtn' and 'prevBtn' dom elements have been created
-nextBtn.on('click', () => controls.nextPOI() )
-prevBtn.on('click', () => controls.prevPOI() )
+// Assuming DOM elements with classes 'nextBtn' and 'prevBtn' have been created
+document.querySelector('.nextBtn').on('click', () => controls.nextPOI() )
+document.querySelector('.prevBtn').on('click', () => controls.prevPOI() )
 
 ```
 

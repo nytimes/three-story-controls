@@ -15,7 +15,7 @@ export declare class KeyboardAdaptor extends BaseAdaptor
 
 ## Remarks
 
-See [KeyboardAdaptorProps](./three-story-controls.keyboardadaptorprops.md) for all properties that can be passed to the constructor.
+See [KeyboardAdaptorProps](./three-story-controls.keyboardadaptorprops.md) for all properties that can be passed to the constructor. See [KeyboardAdaptorDiscreteEvent](./three-story-controls.keyboardadaptordiscreteevent.md) and [KeyboardAdaptorContinuousEvent](./three-story-controls.keyboardadaptorcontinuousevent.md) for emitted event signatures.
 
 ## Example
 

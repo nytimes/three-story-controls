@@ -40,7 +40,8 @@ export interface PointerAdaptorProps {
  * Parse pointer events to emit dampened, normalized coordinates along with the pointer count (for detecting multi-touch or drag events)
  * @remarks
  * See {@link three-story-controls#PointerAdaptorProps} for all properties that can be passed to the constructor.
- * Note: CSS property `touch-action: none` will probably be needed on listener element
+ * See {@link three-story-controls#PointerAdaptorEvent} for emitted event signatures.
+ * Note: CSS property `touch-action: none` will probably be needed on listener element.
  * @example Pointer adaptor
  * ```javascript
  * const pointerAdaptor = new PointerAdaptor()

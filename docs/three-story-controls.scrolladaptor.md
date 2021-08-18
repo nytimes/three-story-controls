@@ -15,7 +15,7 @@ export declare class ScrollAdaptor extends BaseAdaptor
 
 ## Remarks
 
-See [ScrollAdaptorProps](./three-story-controls.scrolladaptorprops.md) for all properties that can be passed to the constructor.
+See [ScrollAdaptorProps](./three-story-controls.scrolladaptorprops.md) for all properties that can be passed to the constructor. See [ScrollAdaptorEvent](./three-story-controls.scrolladaptorevent.md) for emitted event signatures.
 
 ## Example
 

@@ -22,6 +22,7 @@ export declare class CameraHelper {
     private animationClip;
     private isPlaying;
     private playStartTime;
+    private useSlerp;
     constructor(rig: CameraRig, controls: FreeMovementControls, canvas: HTMLCanvasElement, canvasParent?: HTMLElement);
     capture(): void;
     update(time: number): void;

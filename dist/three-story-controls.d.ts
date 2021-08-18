@@ -63,6 +63,7 @@ export declare class CameraHelper {
     private animationClip;
     private isPlaying;
     private playStartTime;
+    private useSlerp;
     constructor(rig: CameraRig, controls: FreeMovementControls, canvas: HTMLCanvasElement, canvasParent?: HTMLElement);
     capture(): void;
     update(time: number): void;
@@ -143,11 +144,13 @@ export declare interface CameraMoveUpdateEvent {
  *
  * Additionally, the default setup assumes that the rig will move forward/backward (`Dolly`) in the direction the camera is panned to.
  * This can be configured through {@link CameraRig.translateAlong | translateAlong property}.
- * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see [src/controlschemes/ThreeDOFControls.ts](src/controlschemes/ThreeDOFControls.ts) for an example.
+ * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see {@link src/controlschemes/ThreeDOFControls.ts} for an example.
  *
  * To move the rig along a specified path, use the {@link CameraRig.setAnimationClip | setAnimationClip() method},
  *  and set the names for the `Translation` and `Rotation` objects to match those of the clip. The clip should have a `VectorKeyframeTrack` for the outer position/translation object,
  *  and a `QuaternionKeyframeTrack` for the inner orientation/rotation object.
+ *
+ * See {@link three-story-controls#CameraMoveStartEvent}, {@link three-story-controls#CameraMoveUpdateEvent} and {@link three-story-controls#CameraMoveEndEvent} for emitted event signatures.
  */
 export declare class CameraRig extends EventDispatcher {
     readonly camera: Camera;
@@ -368,7 +371,7 @@ export declare interface DiscreteEvent {
 
 /**
  * Event: Fired when attempting to go the the next/previous point of interest, but none exists
- * Fired on `StoryPointsControls` and `PathPointsControls`
+ * Fired on `StoryPointsControls` and `PathPointsControls`. `controls.addEventListener('ExitPOIs', ...)`
  * */
 export declare interface ExitPOIsEvent {
     type: 'ExitPOIs';
@@ -388,8 +391,9 @@ export declare interface ExitPOIsEvent {
  * const controls = new FreeMovementControls(cameraRig)
  *
  * controls.enable()
+ *
+ * // render loop
  * function animate(t) {
- *  // render loop
  *  controls.update(t)
  * }
  * ```
@@ -447,6 +451,7 @@ export declare interface IntertiaCompleteEvent {
  * Parse keyboard events and emit either dampened values for continuous keypresses, or trigger events named according to a provided keymapping.
  * @remarks
  * See {@link three-story-controls#KeyboardAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#KeyboardAdaptorDiscreteEvent} and {@link three-story-controls#KeyboardAdaptorContinuousEvent} for emitted event signatures.
  * @example Continuous adaptor
  * ```javascript
  * const keyboardAdaptor = new KeyboardAdaptor({ type: 'continuous', dampingFactor: 0.2 })
@@ -553,8 +558,11 @@ export declare interface PathPointMarker {
 /**
  * Control scheme to transition the camera between specific points (frames) along a path specified through an `AnimationClip`.
  * @remarks
- * Note: CSS property `touch-action: none` will probably be needed on listener element
+ * Note: CSS property `touch-action: none` will probably be needed on listener element.
+ *
  * See {@link three-story-controls#PathPointsControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#PathPointMarker} for POI properties
+ * See {@link three-story-controls#UpdatePOIsEvent} and {@link three-story-controls#ExitPOIsEvent} for emitted event signatures.
  * @example
  * ```js
  *
@@ -565,12 +573,18 @@ export declare interface PathPointMarker {
  *
  * gltfLoader.load(cameraPath, (gltf) => {
  *  camera = gltf.cameras[0]
- *  cameraRig = new CameraRig(gltf.cameras[0], scene, { animationClip: gltf.animations[0] })
+ *  cameraRig = new CameraRig(camera, scene)
+ *  cameraRig.setAnimationClip(gltf.animations[0])
+ *  cameraRig.setAnimationTime(0)
  *  controls = new PathPointsControls(cameraRig, pois)
- *  pois[0].show(1)
  *  controls.enable()
  *  controls.addEventListener('ExitPOIs', (e) => {
- *    alert(`Exit path points from _${e.exitFrom}_ event fired`)
+ *    // e.exitFrom will be either 'start' or 'end'
+ *  })
+ *  controls.addEventListener('update', (e) => {
+ *    // e.currentIndex will be the index of the starting poi
+ *    // e.upcomingIndex will be the index of the upcoming poi
+ *    // e.progress will be a number 0-1 indicating progress of the transition
  *  })
  * })
  * ```
@@ -631,7 +645,8 @@ declare interface POI {
  * Parse pointer events to emit dampened, normalized coordinates along with the pointer count (for detecting multi-touch or drag events)
  * @remarks
  * See {@link three-story-controls#PointerAdaptorProps} for all properties that can be passed to the constructor.
- * Note: CSS property `touch-action: none` will probably be needed on listener element
+ * See {@link three-story-controls#PointerAdaptorEvent} for emitted event signatures.
+ * Note: CSS property `touch-action: none` will probably be needed on listener element.
  * @example Pointer adaptor
  * ```javascript
  * const pointerAdaptor = new PointerAdaptor()
@@ -753,6 +768,7 @@ export declare interface ScrollAction {
  * Emits normalized values for the amount a given DOM element has been scrolled through.
  * @remarks
  * See {@link three-story-controls#ScrollAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ScrollAdaptorEvent} for emitted event signatures.
  * @example Scroll adaptor
  * ```javascript
  * const scrollAdaptor = new ScrollAdaptor({ scrollElement: document.querySelector('.scroller'), dampingFactor: 0.1 })
@@ -839,11 +855,12 @@ export declare interface ScrollAdaptorProps {
  *
  * gltfLoader.load(cameraPath, (gltf) => {
  *  cameraRig.setAnimationClip(gltf.animations[0])
+ *  cameraRig.setAnimationTime(0)
  *  controls.enable()
  * })
  *
+ * // render loop
  * function animate() {
- *  // render loop
  *  controls.update()
  * }
  * ```
@@ -893,9 +910,9 @@ export declare interface ScrollControlsProps {
 
 export declare interface StoryPointMarker {
     /** Camera position */
-    lookAtPosition: Vector3;
+    position: Vector3;
     /** Camera quaternion */
-    lookAtOrientation: Quaternion;
+    quaternion: Quaternion;
     /** Transition duration, defaults to 1 */
     duration?: number;
     /** Transition easing, defaults to power1 */
@@ -911,8 +928,8 @@ export declare interface StoryPointMarker {
  * ```js
  *
  * const pois = [
- *  { lookAtPosition: new Vector3(...), lookAtOrientation: new Quaternion(...) },
- *  { lookAtPosition: new Vector3(...), lookAtOrientation: new Quaternion(...) },
+ *  { position: new Vector3(...), quaternion: new Quaternion(...) },
+ *  { position: new Vector3(...), quaternion: new Quaternion(...) },
  * ]
  * const scene = new Scene()
  * const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -921,13 +938,10 @@ export declare interface StoryPointMarker {
  *
  * controls.enable()
  * controls.goToPOI(0)
- * controls.addEventListener('ExitPOIs', (e) => {
- *  alert(`Exit story points from _${e.exitFrom}_ event fired`)
- * })
  *
- * // assuming some 'nextBtn' and 'prevBtn' dom elements have been created
- * nextBtn.on('click', () => controls.nextPOI() )
- * prevBtn.on('click', () => controls.prevPOI() )
+ * // Assuming DOM elements with classes 'nextBtn' and 'prevBtn' have been created
+ * document.querySelector('.nextBtn').on('click', () => controls.nextPOI() )
+ * document.querySelector('.prevBtn').on('click', () => controls.prevPOI() )
  * ```
  */
 export declare class StoryPointsControls extends EventDispatcher implements BaseControls {
@@ -969,6 +983,7 @@ export declare interface StoryPointsControlsProps {
  * Emits events in response to swipe gestures above a given threshold.
  * @remarks
  * See {@link three-story-controls#SwipeAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#SwipeAdaptorEvent} for emitted event signatures.
  * Note: CSS property `touch-action: none` will probably be needed on listener element
  * @example Swipe adaptor
  * ```javascript
@@ -1031,8 +1046,9 @@ export declare interface SwipeAdaptorProps {
  * const controls = new ThreeDOFControls(cameraRig)
  *
  * controls.enable()
+ *
+ * // render loop
  * function animate(t) {
- *  // render loop
  *  controls.update(t)
  * }
  * ```
@@ -1081,7 +1097,7 @@ export declare interface TranslateGuide {
 }
 
 /**
- * Event: Fired when transitioning between points of interest. Fired on `StoryPointsControls` and `PathPointsControls`
+ * Event: Fired when transitioning between points of interest. Fired on `StoryPointsControls` and `PathPointsControls`. `controls.addEventListener('update', ...)`
  * */
 export declare interface UpdatePOIsEvent {
     type: 'update';
@@ -1094,6 +1110,7 @@ export declare interface UpdatePOIsEvent {
  * Parse mouse wheel events and emit either dampened values, or trigger events for swipes that cross a given threshold.
  * @remarks
  * See {@link three-story-controls#WheelAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#WheelAdaptorDiscreteEvent} and {@link three-story-controls#WheelAdaptorContinuousEvent} for emitted event signatures.
  * @example Discrete adaptor
  * ```javascript
  * const wheelAdaptor = new WheelAdaptor({ type: 'discrete' })

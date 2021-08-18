@@ -4,7 +4,7 @@
 
 ## ExitPOIsEvent interface
 
-Event: Fired when attempting to go the the next/previous point of interest, but none exists Fired on `StoryPointsControls` and `PathPointsControls`
+Event: Fired when attempting to go the the next/previous point of interest, but none exists Fired on `StoryPointsControls` and `PathPointsControls`<!-- -->. `controls.addEventListener('ExitPOIs', ...)`
 
 <b>Signature:</b>
 

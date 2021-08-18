@@ -27,8 +27,9 @@ const cameraRig = new CameraRig(camera, scene)
 const controls = new FreeMovementControls(cameraRig)
 
 controls.enable()
+
+// render loop
 function animate(t) {
- // render loop
  controls.update(t)
 }
 

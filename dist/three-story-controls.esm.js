@@ -202,11 +202,13 @@ const ActionMappingByUpAxis = {
  *
  * Additionally, the default setup assumes that the rig will move forward/backward (`Dolly`) in the direction the camera is panned to.
  * This can be configured through {@link CameraRig.translateAlong | translateAlong property}.
- * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see [src/controlschemes/ThreeDOFControls.ts](src/controlschemes/ThreeDOFControls.ts) for an example.
+ * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see {@link src/controlschemes/ThreeDOFControls.ts} for an example.
  *
  * To move the rig along a specified path, use the {@link CameraRig.setAnimationClip | setAnimationClip() method},
  *  and set the names for the `Translation` and `Rotation` objects to match those of the clip. The clip should have a `VectorKeyframeTrack` for the outer position/translation object,
  *  and a `QuaternionKeyframeTrack` for the inner orientation/rotation object.
+ *
+ * See {@link three-story-controls#CameraMoveStartEvent}, {@link three-story-controls#CameraMoveUpdateEvent} and {@link three-story-controls#CameraMoveEndEvent} for emitted event signatures.
  */
 class CameraRig extends EventDispatcher {
     // Constructor
@@ -570,6 +572,7 @@ const defaultProps$9 = {
  * Parse keyboard events and emit either dampened values for continuous keypresses, or trigger events named according to a provided keymapping.
  * @remarks
  * See {@link three-story-controls#KeyboardAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#KeyboardAdaptorDiscreteEvent} and {@link three-story-controls#KeyboardAdaptorContinuousEvent} for emitted event signatures.
  * @example Continuous adaptor
  * ```javascript
  * const keyboardAdaptor = new KeyboardAdaptor({ type: 'continuous', dampingFactor: 0.2 })
@@ -669,7 +672,8 @@ const defaultProps$8 = {
  * Parse pointer events to emit dampened, normalized coordinates along with the pointer count (for detecting multi-touch or drag events)
  * @remarks
  * See {@link three-story-controls#PointerAdaptorProps} for all properties that can be passed to the constructor.
- * Note: CSS property `touch-action: none` will probably be needed on listener element
+ * See {@link three-story-controls#PointerAdaptorEvent} for emitted event signatures.
+ * Note: CSS property `touch-action: none` will probably be needed on listener element.
  * @example Pointer adaptor
  * ```javascript
  * const pointerAdaptor = new PointerAdaptor()
@@ -838,6 +842,7 @@ const defaultProps$7 = {
  * Emits normalized values for the amount a given DOM element has been scrolled through.
  * @remarks
  * See {@link three-story-controls#ScrollAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ScrollAdaptorEvent} for emitted event signatures.
  * @example Scroll adaptor
  * ```javascript
  * const scrollAdaptor = new ScrollAdaptor({ scrollElement: document.querySelector('.scroller'), dampingFactor: 0.1 })
@@ -945,6 +950,7 @@ const defaultProps$6 = {
  * Emits events in response to swipe gestures above a given threshold.
  * @remarks
  * See {@link three-story-controls#SwipeAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#SwipeAdaptorEvent} for emitted event signatures.
  * Note: CSS property `touch-action: none` will probably be needed on listener element
  * @example Swipe adaptor
  * ```javascript
@@ -1009,6 +1015,7 @@ const defaultProps$5 = {
  * Parse mouse wheel events and emit either dampened values, or trigger events for swipes that cross a given threshold.
  * @remarks
  * See {@link three-story-controls#WheelAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#WheelAdaptorDiscreteEvent} and {@link three-story-controls#WheelAdaptorContinuousEvent} for emitted event signatures.
  * @example Discrete adaptor
  * ```javascript
  * const wheelAdaptor = new WheelAdaptor({ type: 'discrete' })
@@ -1103,8 +1110,9 @@ const defaultProps$4 = {
  * const controls = new FreeMovementControls(cameraRig)
  *
  * controls.enable()
+ *
+ * // render loop
  * function animate(t) {
- *  // render loop
  *  controls.update(t)
  * }
  * ```

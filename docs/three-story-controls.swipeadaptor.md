@@ -15,7 +15,7 @@ export declare class SwipeAdaptor extends BaseAdaptor
 
 ## Remarks
 
-See [SwipeAdaptorProps](./three-story-controls.swipeadaptorprops.md) for all properties that can be passed to the constructor. Note: CSS property `touch-action: none` will probably be needed on listener element
+See [SwipeAdaptorProps](./three-story-controls.swipeadaptorprops.md) for all properties that can be passed to the constructor. See [SwipeAdaptorEvent](./three-story-controls.swipeadaptorevent.md) for emitted event signatures. Note: CSS property `touch-action: none` will probably be needed on listener element
 
 ## Example
 

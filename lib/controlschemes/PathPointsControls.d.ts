@@ -22,8 +22,11 @@ export interface PathPointsControlsProps {
 /**
  * Control scheme to transition the camera between specific points (frames) along a path specified through an `AnimationClip`.
  * @remarks
- * Note: CSS property `touch-action: none` will probably be needed on listener element
+ * Note: CSS property `touch-action: none` will probably be needed on listener element.
+ *
  * See {@link three-story-controls#PathPointsControlsProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#PathPointMarker} for POI properties
+ * See {@link three-story-controls#UpdatePOIsEvent} and {@link three-story-controls#ExitPOIsEvent} for emitted event signatures.
  * @example
  * ```js
  *
@@ -34,12 +37,18 @@ export interface PathPointsControlsProps {
  *
  * gltfLoader.load(cameraPath, (gltf) => {
  *  camera = gltf.cameras[0]
- *  cameraRig = new CameraRig(gltf.cameras[0], scene, { animationClip: gltf.animations[0] })
+ *  cameraRig = new CameraRig(camera, scene)
+ *  cameraRig.setAnimationClip(gltf.animations[0])
+ *  cameraRig.setAnimationTime(0)
  *  controls = new PathPointsControls(cameraRig, pois)
- *  pois[0].show(1)
  *  controls.enable()
  *  controls.addEventListener('ExitPOIs', (e) => {
- *    alert(`Exit path points from _${e.exitFrom}_ event fired`)
+ *    // e.exitFrom will be either 'start' or 'end'
+ *  })
+ *  controls.addEventListener('update', (e) => {
+ *    // e.currentIndex will be the index of the starting poi
+ *    // e.upcomingIndex will be the index of the upcoming poi
+ *    // e.progress will be a number 0-1 indicating progress of the transition
  *  })
  * })
  * ```

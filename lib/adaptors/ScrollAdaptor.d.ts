@@ -26,6 +26,7 @@ export interface ScrollAdaptorProps {
  * Emits normalized values for the amount a given DOM element has been scrolled through.
  * @remarks
  * See {@link three-story-controls#ScrollAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#ScrollAdaptorEvent} for emitted event signatures.
  * @example Scroll adaptor
  * ```javascript
  * const scrollAdaptor = new ScrollAdaptor({ scrollElement: document.querySelector('.scroller'), dampingFactor: 0.1 })

@@ -44,7 +44,7 @@
 |  [DamperProps](./three-story-controls.damperprops.md) |  |
 |  [DamperValues](./three-story-controls.dampervalues.md) |  |
 |  [DiscreteEvent](./three-story-controls.discreteevent.md) |  |
-|  [ExitPOIsEvent](./three-story-controls.exitpoisevent.md) | Event: Fired when attempting to go the the next/previous point of interest, but none exists Fired on <code>StoryPointsControls</code> and <code>PathPointsControls</code> |
+|  [ExitPOIsEvent](./three-story-controls.exitpoisevent.md) | Event: Fired when attempting to go the the next/previous point of interest, but none exists Fired on <code>StoryPointsControls</code> and <code>PathPointsControls</code>. <code>controls.addEventListener('ExitPOIs', ...)</code> |
 |  [FreeMovementControlsProps](./three-story-controls.freemovementcontrolsprops.md) | Properties that can be passed to the [FreeMovementControls](./three-story-controls.freemovementcontrols.md) constructor |
 |  [IntertiaCompleteEvent](./three-story-controls.intertiacompleteevent.md) |  |
 |  [KeyboardAdaptorContinuousEvent](./three-story-controls.keyboardadaptorcontinuousevent.md) | Event: Fired when a key in a <code>continuous</code> KeyboardAdaptor's mapping is pressed (<code>onKeyDown</code>) |
@@ -65,7 +65,7 @@
 |  [SwipeAdaptorProps](./three-story-controls.swipeadaptorprops.md) | Properties that can be passed to the [SwipeAdaptor](./three-story-controls.swipeadaptor.md) constructor |
 |  [ThreeDOFControlsProps](./three-story-controls.threedofcontrolsprops.md) | Properties that can be passed to the [ThreeDOFControls](./three-story-controls.threedofcontrols.md) constructor |
 |  [TranslateGuide](./three-story-controls.translateguide.md) | Describe whether rig should translate along current rotation in each action axis |
-|  [UpdatePOIsEvent](./three-story-controls.updatepoisevent.md) | Event: Fired when transitioning between points of interest. Fired on <code>StoryPointsControls</code> and <code>PathPointsControls</code> |
+|  [UpdatePOIsEvent](./three-story-controls.updatepoisevent.md) | Event: Fired when transitioning between points of interest. Fired on <code>StoryPointsControls</code> and <code>PathPointsControls</code>. <code>controls.addEventListener('update', ...)</code> |
 |  [WheelAdaptorContinuousEvent](./three-story-controls.wheeladaptorcontinuousevent.md) | Event: Fired on a continuous <code>WheelAdaptor</code> in response to <code>wheel</code> events |
 |  [WheelAdaptorDiscreteEvent](./three-story-controls.wheeladaptordiscreteevent.md) | Event: Fired when when discrete <code>wheel</code> events are registered |
 |  [WheelAdaptorProps](./three-story-controls.wheeladaptorprops.md) | Properties that can be passed to the [WheelAdaptor](./three-story-controls.wheeladaptor.md) constructor |

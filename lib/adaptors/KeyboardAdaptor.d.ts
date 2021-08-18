@@ -66,6 +66,7 @@ export interface KeyboardAdaptorProps {
  * Parse keyboard events and emit either dampened values for continuous keypresses, or trigger events named according to a provided keymapping.
  * @remarks
  * See {@link three-story-controls#KeyboardAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#KeyboardAdaptorDiscreteEvent} and {@link three-story-controls#KeyboardAdaptorContinuousEvent} for emitted event signatures.
  * @example Continuous adaptor
  * ```javascript
  * const keyboardAdaptor = new KeyboardAdaptor({ type: 'continuous', dampingFactor: 0.2 })

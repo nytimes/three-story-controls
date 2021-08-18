@@ -115,7 +115,7 @@ export class CameraHelper {
     //
     // (undocumented)
     updatePoi(index: number, props: Partial<POI>): void;
-}
+    }
 
 // @public
 export interface CameraMoveEndEvent {
@@ -448,8 +448,8 @@ export interface ScrollControlsProps {
 export interface StoryPointMarker {
     duration?: number;
     ease?: string;
-    lookAtOrientation: Quaternion;
-    lookAtPosition: Vector3;
+    position: Vector3;
+    quaternion: Quaternion;
 }
 
 // @public

@@ -17,7 +17,9 @@ export declare class PathPointsControls extends EventDispatcher implements BaseC
 
 ## Remarks
 
-Note: CSS property `touch-action: none` will probably be needed on listener element See [PathPointsControlsProps](./three-story-controls.pathpointscontrolsprops.md) for all properties that can be passed to the constructor.
+Note: CSS property `touch-action: none` will probably be needed on listener element.
+
+See [PathPointsControlsProps](./three-story-controls.pathpointscontrolsprops.md) for all properties that can be passed to the constructor. See [PathPointMarker](./three-story-controls.pathpointmarker.md) for POI properties See [UpdatePOIsEvent](./three-story-controls.updatepoisevent.md) and [ExitPOIsEvent](./three-story-controls.exitpoisevent.md) for emitted event signatures.
 
 ## Example
 
@@ -31,12 +33,18 @@ let camera, cameraRig, controls
 
 gltfLoader.load(cameraPath, (gltf) => {
  camera = gltf.cameras[0]
- cameraRig = new CameraRig(gltf.cameras[0], scene, { animationClip: gltf.animations[0] })
+ cameraRig = new CameraRig(camera, scene)
+ cameraRig.setAnimationClip(gltf.animations[0])
+ cameraRig.setAnimationTime(0)
  controls = new PathPointsControls(cameraRig, pois)
- pois[0].show(1)
  controls.enable()
  controls.addEventListener('ExitPOIs', (e) => {
-   alert(`Exit path points from _${e.exitFrom}_ event fired`)
+   // e.exitFrom will be either 'start' or 'end'
+ })
+ controls.addEventListener('update', (e) => {
+   // e.currentIndex will be the index of the starting poi
+   // e.upcomingIndex will be the index of the upcoming poi
+   // e.progress will be a number 0-1 indicating progress of the transition
  })
 })
 

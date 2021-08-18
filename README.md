@@ -92,7 +92,7 @@ Download [`dist/three-story-controls.esm.min.js`](dist/three-story-controls.esm.
   </script>
   <script src='index.js' type='module-shim'></script>
   ```
-  
+
   #### **`index.js`**
   ```javascript
   import { Scene, PerspectiveCamera } from 'three'
@@ -105,6 +105,14 @@ If you use a build system such as Webpack / Parcel / Rollup etc, you can also in
 npm install -s three gsap three-story-controls
 ```
 See [here](examples/installation/webpack) for a webpack example.
+
+### 3. Script tag
+Download [`dist/three-story-controls.min.js`](dist/three-story-controls.min.js) and include it in your HTML file with a script tag, along with three.js and gsap. This will expose a global variable `ThreeStoryControls`. See [here](examples/installation/script-src) for more:
+  ```html
+  <script src="https://unpkg.com/three@0.129.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.6.1/dist/gsap.min.js"></script>
+  <script src='three-story-controls.min.js'></script>
+  ```
 
 <br>
 

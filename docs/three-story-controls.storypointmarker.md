@@ -16,6 +16,6 @@ export interface StoryPointMarker
 |  --- | --- | --- |
 |  [duration?](./three-story-controls.storypointmarker.duration.md) | number | <i>(Optional)</i> Transition duration, defaults to 1 |
 |  [ease?](./three-story-controls.storypointmarker.ease.md) | string | <i>(Optional)</i> Transition easing, defaults to power1 |
-|  [lookAtOrientation](./three-story-controls.storypointmarker.lookatorientation.md) | Quaternion | Camera quaternion |
-|  [lookAtPosition](./three-story-controls.storypointmarker.lookatposition.md) | Vector3 | Camera position |
+|  [position](./three-story-controls.storypointmarker.position.md) | Vector3 | Camera position |
+|  [quaternion](./three-story-controls.storypointmarker.quaternion.md) | Quaternion | Camera quaternion |
 

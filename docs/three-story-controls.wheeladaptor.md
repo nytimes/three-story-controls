@@ -15,7 +15,7 @@ export declare class WheelAdaptor extends BaseAdaptor
 
 ## Remarks
 
-See [WheelAdaptorProps](./three-story-controls.wheeladaptorprops.md) for all properties that can be passed to the constructor.
+See [WheelAdaptorProps](./three-story-controls.wheeladaptorprops.md) for all properties that can be passed to the constructor. See [WheelAdaptorDiscreteEvent](./three-story-controls.wheeladaptordiscreteevent.md) and [WheelAdaptorContinuousEvent](./three-story-controls.wheeladaptorcontinuousevent.md) for emitted event signatures.
 
 ## Example
 

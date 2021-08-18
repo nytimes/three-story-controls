@@ -4,7 +4,7 @@
 
 ## UpdatePOIsEvent interface
 
-Event: Fired when transitioning between points of interest. Fired on `StoryPointsControls` and `PathPointsControls`
+Event: Fired when transitioning between points of interest. Fired on `StoryPointsControls` and `PathPointsControls`<!-- -->. `controls.addEventListener('update', ...)`
 
 <b>Signature:</b>
 

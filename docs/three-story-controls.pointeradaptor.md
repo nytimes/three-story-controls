@@ -15,7 +15,7 @@ export declare class PointerAdaptor extends BaseAdaptor
 
 ## Remarks
 
-See [PointerAdaptorProps](./three-story-controls.pointeradaptorprops.md) for all properties that can be passed to the constructor. Note: CSS property `touch-action: none` will probably be needed on listener element
+See [PointerAdaptorProps](./three-story-controls.pointeradaptorprops.md) for all properties that can be passed to the constructor. See [PointerAdaptorEvent](./three-story-controls.pointeradaptorevent.md) for emitted event signatures. Note: CSS property `touch-action: none` will probably be needed on listener element.
 
 ## Example
 

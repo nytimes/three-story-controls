@@ -46,7 +46,8 @@ const defaultProps: FreeMovementControlsProps = {
  *
  * See {@link three-story-controls#FreeMovementControlsProps} for all properties that can be passed to the constructor.
  *
- * {@link https://nytimes.github.io/three-story-controls/examples/demos/freemove/index.html | DEMO }
+ * {@link https://nytimes.github.io/three-story-controls/examples/demos/freemove | DEMO }
+ *
  * @example
  * ```js
  * const scene = new Scene()

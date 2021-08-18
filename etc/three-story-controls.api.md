@@ -72,49 +72,17 @@ export enum CameraAction {
     Zoom = "Zoom"
 }
 
-// @public (undocumented)
+// @public
 export class CameraHelper {
     constructor(rig: CameraRig, controls: FreeMovementControls, canvas: HTMLCanvasElement, canvasParent?: HTMLElement);
     // (undocumented)
-    addPoi(image: string): void;
-    // (undocumented)
     readonly canvas: HTMLCanvasElement;
-    // (undocumented)
-    capture(): void;
-    // (undocumented)
-    collapse(): void;
     // (undocumented)
     readonly controls: FreeMovementControls;
     // (undocumented)
-    createClip(): void;
-    // (undocumented)
-    export(): void;
-    // (undocumented)
-    exportImages(): void;
-    // (undocumented)
-    goToPoi(index: number): void;
-    // (undocumented)
-    handleEvents(event: any): void;
-    // (undocumented)
-    initUI(canvasParent?: HTMLElement): void;
-    // (undocumented)
-    movePoi(index: number, direction: number): void;
-    // (undocumented)
-    playClip(): void;
-    // (undocumented)
-    removePoi(index: number): void;
-    // (undocumented)
-    render(): void;
-    // (undocumented)
     readonly rig: CameraRig;
     // (undocumented)
-    scrubClip(amount: number): void;
-    // (undocumented)
     update(time: number): void;
-    // Warning: (ae-forgotten-export) The symbol "POI" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    updatePoi(index: number, props: Partial<POI>): void;
     }
 
 // @public

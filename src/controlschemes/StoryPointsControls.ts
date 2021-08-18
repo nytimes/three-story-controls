@@ -33,6 +33,7 @@ const defaultProps: StoryPointsControlsProps = {
  * Control scheme to transition the camera between given points in world space.
  * @remarks
  * See {@link three-story-controls#StoryPointsControlsProps} for all properties that can be passed to the constructor.
+ *
  * See {@link three-story-controls#StoryPointMarker} for POI properties.
  *
  * {@link https://nytimes.github.io/three-story-controls/examples/demos/story-points/ | DEMO }

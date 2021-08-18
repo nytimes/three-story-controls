@@ -9,7 +9,7 @@
 |  Class | Description |
 |  --- | --- |
 |  [BaseAdaptor](./three-story-controls.baseadaptor.md) |  |
-|  [CameraHelper](./three-story-controls.camerahelper.md) |  |
+|  [CameraHelper](./three-story-controls.camerahelper.md) | A helper tool for creating camera animation paths and/or choosing camera look-at positions for points of interest in a scene |
 |  [CameraRig](./three-story-controls.camerarig.md) | The CameraRig holds the camera, and can respond to [CameraAction](./three-story-controls.cameraaction.md)<!-- -->s such as Pan/Tilt/Dolly etc. It can also be controlled along a given path (in the form of an <code>AnimationClip</code>), or tweened to specified points. |
 |  [Damper](./three-story-controls.damper.md) | Damper uses simple linear damping for a given collection of values. On every call to update, the damper will approach a given set of target values. |
 |  [FreeMovementControls](./three-story-controls.freemovementcontrols.md) | Control scheme to move the camera with arrow/WASD keys and mouse wheel; and rotate the camera with click-and-drag events. |

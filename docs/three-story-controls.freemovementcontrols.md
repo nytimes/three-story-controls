@@ -19,7 +19,7 @@ Note: CSS property `touch-action: none` will probably be needed on listener elem
 
 See [FreeMovementControlsProps](./three-story-controls.freemovementcontrolsprops.md) for all properties that can be passed to the constructor.
 
-[DEMO](https://nytimes.github.io/three-story-controls/examples/demos/freemove/index.html)
+[DEMO](https://nytimes.github.io/three-story-controls/examples/demos/freemove)
 
 ## Example
 

@@ -19,7 +19,11 @@ export declare class PathPointsControls extends EventDispatcher implements BaseC
 
 Note: CSS property `touch-action: none` will probably be needed on listener element.
 
-See [PathPointsControlsProps](./three-story-controls.pathpointscontrolsprops.md) for all properties that can be passed to the constructor. See [PathPointMarker](./three-story-controls.pathpointmarker.md) for POI properties See [UpdatePOIsEvent](./three-story-controls.updatepoisevent.md) and [ExitPOIsEvent](./three-story-controls.exitpoisevent.md) for emitted event signatures.
+See [PathPointsControlsProps](./three-story-controls.pathpointscontrolsprops.md) for all properties that can be passed to the constructor.
+
+See [PathPointMarker](./three-story-controls.pathpointmarker.md) for POI properties.
+
+See [UpdatePOIsEvent](./three-story-controls.updatepoisevent.md) and [ExitPOIsEvent](./three-story-controls.exitpoisevent.md) for emitted event signatures.
 
 [DEMO](https://nytimes.github.io/three-story-controls/examples/demos/path-points/)
 

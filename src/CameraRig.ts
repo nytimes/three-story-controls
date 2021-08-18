@@ -9,7 +9,6 @@ import {
   AnimationClip,
   EventDispatcher,
   Euler,
-  LoopOnce,
 } from 'three'
 
 import { TweenMax } from 'gsap'
@@ -148,11 +147,13 @@ const ActionMappingByUpAxis = {
  *
  * Additionally, the default setup assumes that the rig will move forward/backward (`Dolly`) in the direction the camera is panned to.
  * This can be configured through {@link CameraRig.translateAlong | translateAlong property}.
- * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see [src/controlschemes/ThreeDOFControls.ts](src/controlschemes/ThreeDOFControls.ts) for an example.
+ * It can also be overwritten by providing the component name to the {@link CameraRig.do | do() method}, see {@link src/controlschemes/ThreeDOFControls.ts} for an example.
  *
  * To move the rig along a specified path, use the {@link CameraRig.setAnimationClip | setAnimationClip() method},
  *  and set the names for the `Translation` and `Rotation` objects to match those of the clip. The clip should have a `VectorKeyframeTrack` for the outer position/translation object,
  *  and a `QuaternionKeyframeTrack` for the inner orientation/rotation object.
+ *
+ * See {@link three-story-controls#CameraMoveStartEvent}, {@link three-story-controls#CameraMoveUpdateEvent} and {@link three-story-controls#CameraMoveEndEvent} for emitted event signatures.
  */
 export class CameraRig extends EventDispatcher {
   readonly camera: Camera

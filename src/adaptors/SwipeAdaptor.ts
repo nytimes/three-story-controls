@@ -33,6 +33,7 @@ const defaultProps: SwipeAdaptorProps = {
  * Emits events in response to swipe gestures above a given threshold.
  * @remarks
  * See {@link three-story-controls#SwipeAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#SwipeAdaptorEvent} for emitted event signatures.
  * Note: CSS property `touch-action: none` will probably be needed on listener element
  * @example Swipe adaptor
  * ```javascript

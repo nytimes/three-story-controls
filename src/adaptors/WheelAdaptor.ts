@@ -56,6 +56,7 @@ const defaultProps: Partial<WheelAdaptorProps> = {
  * Parse mouse wheel events and emit either dampened values, or trigger events for swipes that cross a given threshold.
  * @remarks
  * See {@link three-story-controls#WheelAdaptorProps} for all properties that can be passed to the constructor.
+ * See {@link three-story-controls#WheelAdaptorDiscreteEvent} and {@link three-story-controls#WheelAdaptorContinuousEvent} for emitted event signatures.
  * @example Discrete adaptor
  * ```javascript
  * const wheelAdaptor = new WheelAdaptor({ type: 'discrete' })

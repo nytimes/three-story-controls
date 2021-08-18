@@ -52,8 +52,9 @@ const defaultProps: FreeMovementControlsProps = {
  * const controls = new FreeMovementControls(cameraRig)
  *
  * controls.enable()
+ *
+ * // render loop
  * function animate(t) {
- *  // render loop
  *  controls.update(t)
  * }
  * ```

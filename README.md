@@ -13,7 +13,7 @@
     <a href="#demos">Demos</a> &mdash;
     <a href="#usage">Usage</a> &mdash;
     <a href="#installation">Installation</a> &mdash;
-    <a href="docs/three-story-controls.md">API Docs</a> &mdash; 
+    <a href="docs/three-story-controls.html">API Docs</a> &mdash; 
     <a href="#contributing">Contributing</a> 
     <br><br>
     Components: <br>
@@ -182,7 +182,7 @@ API documentation lives [here](docs/three-story-controls.md), and demos can be v
 ---
 
 ## Contributing
-Contributions are welcome! To develop locally, run `npm install` and then `npm run dev` to watch and serve the [demos](examples/demos) directory at `http://localhost:8080`, where you can add a new page to test out changes (please ensure test pages are ignoted by git). 
+Contributions are welcome! To develop locally, run `npm install` and then `npm run dev`. The [demos](examples/demos) directory will be watched and served at `http://localhost:8080/examples/demos`, where you can add a new page to test out changes (please ensure test pages are ignored by git). 
 
 If you add a new component, be sure to create an example and document it following the [TSDoc](https://tsdoc.org/) standard. The library uses [API Extractor](https://api-extractor.com/), which has [some additional](https://api-extractor.com/pages/tsdoc/doc_comment_syntax/) comment tags available. To extract the documentation, run `npm run build:docs`. For production builds, run `npm run build:production`.
 

@@ -26,3 +26,4 @@ steps:
       - npm run examples:link
     environment:
       - NODE_ENV: production
+      

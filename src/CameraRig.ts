@@ -273,7 +273,6 @@ export class CameraRig extends EventDispatcher {
 
   /**
    * Get world position and orientation of the camera
-   * @internal
    */
   getWorldCoordinates(): { position: Vector3; quaternion: Quaternion } {
     const position = new Vector3()

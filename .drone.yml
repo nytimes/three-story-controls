@@ -25,5 +25,5 @@ steps:
       # temporary until lib is published to npm
       - npm run examples:link
     environment:
-      - NODE_ENV: production
-      
+      NODE_ENV: production
+

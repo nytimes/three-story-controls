@@ -5,16 +5,18 @@
   top: 0;
   left: 0;
   z-index: 99999;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   box-sizing: border-box;
   overflow-x: visible;
   transition: all 0.2s ease-in-out;
-  &.collapsed { left: -350px; }
+  &.collapsed {
+    left: -350px;
+  }
 
   * {
     box-sizing: border-box;
   }
-  
+
   button {
     text-transform: capitalize;
     cursor: pointer;
@@ -55,14 +57,12 @@
     width: 100%;
   }
 
-
-
   .pois {
     height: calc(100vh - 185px - 1rem);
     overflow: scroll;
     padding: 1rem 1rem 0;
   }
-  
+
   .poi {
     margin-bottom: 1rem;
     h2 {
@@ -94,7 +94,9 @@
       flex-wrap: wrap;
       width: calc(100% - 2.5rem);
     }
-    label, input, select {
+    label,
+    input,
+    select {
       width: 50%;
       font-size: 0.7rem;
       font-family: monospace;
@@ -104,5 +106,4 @@
       text-align: center;
     }
   }
-
 }

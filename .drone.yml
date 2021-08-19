@@ -1,0 +1,28 @@
+kind: pipeline
+type: docker
+name: default
+   
+steps:
+  - name: install
+    image: node:12
+    commands:
+      - npm install
+
+  - name: prettier
+    image: node:12
+    commands:
+      - npm run prettier
+
+  - name: docs
+    image: node:12
+    commands:
+      - npm run build:docs
+
+  - name: build
+    image: node:12
+    commands:
+      - npm run build
+      # temporary until lib is published to npm
+      - npm run examples:link
+    environment:
+      - NODE_ENV: production

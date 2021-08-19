@@ -83,7 +83,7 @@ export class CameraHelper {
     readonly rig: CameraRig;
     // (undocumented)
     update(time: number): void;
-    }
+}
 
 // @public
 export interface CameraMoveEndEvent {
@@ -112,9 +112,16 @@ export class CameraRig extends EventDispatcher {
     readonly camera: Camera;
     disassemble(): void;
     do(action: CameraAction, amount: number, rigComponent?: RigComponent): void;
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
     flyTo(position: Vector3, quaternion: Quaternion, duration?: number, ease?: string, useSlerp?: boolean): void;
     flyToKeyframe(frame: number, duration?: number, ease?: string): void;
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
     getAxisFor(action: CameraAction): string;
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
     getAxisVectorFor(action: CameraAction): Vector3;
     getRotationOrder(): string;
     getWorldCoordinates(): {
@@ -126,6 +133,9 @@ export class CameraRig extends EventDispatcher {
     packTransform(): void;
     // (undocumented)
     readonly scene: Scene;
+    // Warning: (tsdoc-param-tag-with-invalid-type) The @param block should not include a JSDoc-style '{type}'
+    // Warning: (tsdoc-param-tag-with-invalid-type) The @param block should not include a JSDoc-style '{type}'
+    // Warning: (tsdoc-param-tag-with-invalid-type) The @param block should not include a JSDoc-style '{type}'
     setAnimationClip(clip: AnimationClip, translationObjectName?: string, rotationObjectName?: string): void;
     // (undocumented)
     setAnimationKeyframe(frame: number): void;
@@ -134,6 +144,7 @@ export class CameraRig extends EventDispatcher {
     // (undocumented)
     setAnimationTime(time: number): void;
     setUpAxis(axis: Axis): void;
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
     setWorldCoordinates({ position, quaternion }: {
         position: Vector3;
         quaternion: Quaternion;
@@ -141,7 +152,7 @@ export class CameraRig extends EventDispatcher {
     // (undocumented)
     translateAlong: TranslateGuide;
     unpackTransform(): void;
-    }
+}
 
 // @public (undocumented)
 export interface ContinuousEvent {
@@ -152,15 +163,20 @@ export interface ContinuousEvent {
 // @public
 export class Damper {
     constructor(props: DamperProps);
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
     addToTarget(key: string, value: number): void;
     getCurrentValues(): DamperValues;
     getDeltaValues(): DamperValues;
     reachedTarget(): boolean;
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
     resetAll(value: number): void;
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
     resetData(values: DamperValues): void;
+    // Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
     setTarget(target: DamperValues): void;
     update(): void;
-    }
+}
 
 // @public (undocumented)
 export interface DamperProps {
@@ -190,6 +206,7 @@ export interface ExitPOIsEvent {
 
 // @public
 export class FreeMovementControls implements BaseControls {
+    // Warning: (tsdoc-inheritdoc-tag-syntax) Unexpected character after declaration reference
     constructor(cameraRig: CameraRig, props?: FreeMovementControlsProps);
     // (undocumented)
     readonly cameraRig: CameraRig;
@@ -201,7 +218,7 @@ export class FreeMovementControls implements BaseControls {
     isEnabled(): boolean;
     // (undocumented)
     update(time: number): void;
-    }
+}
 
 // @public
 export interface FreeMovementControlsProps {
@@ -287,7 +304,7 @@ export class PathPointsControls extends EventDispatcher implements BaseControls 
     isEnabled(): boolean;
     // (undocumented)
     update(): void;
-    }
+}
 
 // @public
 export interface PathPointsControlsProps {
@@ -309,7 +326,7 @@ export class PointerAdaptor extends BaseAdaptor {
     isEnabled(): boolean;
     // (undocumented)
     update(time: number): void;
-    }
+}
 
 // @public
 export interface PointerAdaptorEvent extends ContinuousEvent {
@@ -366,7 +383,7 @@ export class ScrollAdaptor extends BaseAdaptor {
     parseOffset(offset: string): number;
     // (undocumented)
     update(): void;
-    }
+}
 
 // @public
 export interface ScrollAdaptorEvent extends ContinuousEvent {
@@ -441,7 +458,7 @@ export class StoryPointsControls extends EventDispatcher implements BaseControls
     prevPOI(): void;
     // (undocumented)
     update(): void;
-    }
+}
 
 // @public
 export interface StoryPointsControlsProps {
@@ -565,7 +582,6 @@ export interface WheelAdaptorProps {
 
 // @public
 export type WheelAdaptorType = 'discrete' | 'continuous';
-
 
 // (No @packageDocumentation comment for this package)
 

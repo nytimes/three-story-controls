@@ -4,7 +4,7 @@
   "description": "A collection of components to make three.js camera controls easier",
   "main": "dist/three-story-controls.esm.min.js",
   "module": "dist/three-story-controls.esm.min.js",
-  "typings": "dist/three-story-controls.d.ts",
+  "typings": "./lib/three-story-controls.d.ts",
   "author": "",
   "license": "ISC",
   "directories": {
@@ -17,11 +17,12 @@
     "prettier": "prettier --write src/**",
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationMap --declarationDir lib/",
     "api:extract": "api-extractor run --local --verbose",
+    "api:extract:production": "api-extractor run",
     "api:generate": "api-documenter markdown --input-folder temp --output-folder docs/",
-    "build:docs": "npm run build:types && npm run api:extract && npm run api:generate",
+    "docs": "npm run build:types && npm run api:extract && npm run api:generate",
+    "docs:production": "npm run build:types && npm run api:extract:production && npm run api:generate",
     "examples:link": "cd examples/installation/webpack && npm link ../../../",
     "build:production": "export NODE_ENV=production || set NODE_ENV=production && npm run build && npm run examples:link",
-    "build:all": "npm run build && npm run build:docs && npm run build:production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
@@ -30,7 +31,7 @@
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.13.16",
-    "@microsoft/api-extractor": "^7.16.1",
+    "@microsoft/api-extractor": "^7.18.5",
     "@rbnlffl/rollup-plugin-eslint": "^2.0.0",
     "@rollup/plugin-typescript": "^8.2.1",
     "@types/three": "^0.129.1",

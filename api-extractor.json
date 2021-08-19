@@ -17,7 +17,14 @@
   "messages": {
     "compilerMessageReporting": {
       "default": {
-        "logLevel": "warning"
+        "logLevel": "warning",
+        "addToApiReportFile": true
+      }
+    },
+    "tsdocMessageReporting": {
+      "default": {
+        "logLevel": "warning",
+        "addToApiReportFile": true
       }
     },
     "extractorMessageReporting": {

@@ -16,7 +16,7 @@ steps:
   - name: docs
     image: node:12
     commands:
-      - npm run build:docs
+      - npm run docs:production
 
   - name: build
     image: node:12

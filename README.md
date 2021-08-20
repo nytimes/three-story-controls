@@ -203,6 +203,19 @@ class MyCustomControls implements BaseControls {
     this.onPointer = this.onPointer.bind(this)
   }
 
+
+  // Handle events
+  // Adaptors emit smoothed (and normalized) values that can be processed as needed
+  // See adaptor docs for details on the event signatures  
+  private onKey(event) {
+    // Tell the Camera Rig to do a specific action, by a given amount
+    this.cameraRig.do(CameraAction.Dolly, event.value.backward - event.value.forward)
+  }
+
+  private onPointer(event) {
+    this.cameraRig.do(CameraAction.Pan, event.deltas.x)
+  }
+
   // Implement BaseControl method
   enable() {
     // Connect the adaptors
@@ -224,18 +237,6 @@ class MyCustomControls implements BaseControls {
       this.keyboardAdaptor.update()
       this.pointerAdaptor.update(time)
     }
-  }
-
-  // Handle events
-  // Adaptors emit smoothed (and normalized) values that can be processed as needed
-  // See adaptor docs for details on the event signatures  
-  private onKey(event) {
-    // Tell the Camera Rig to do a specific action, by a given amount
-    this.cameraRig.do(CameraAction.Dolly, event.value.backward - event.value.forward)
-  }
-
-  private onPointer(event) {
-    this.cameraRig.do(CameraAction.Pan, event.deltas.x)
   }
 }
 ```

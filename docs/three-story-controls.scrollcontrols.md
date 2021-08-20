@@ -15,6 +15,8 @@ export declare class ScrollControls implements BaseControls
 
 ## Remarks
 
+Control scheme to scrub through the CameraRig's `AnimationClip` based on the scroll of a DOM Element. These controls expect to observe an element that is a few viewports long, and use the scroll distance to scrub through a camera animation. By default, the 'start' of the animation is when the element starts to be in view (ie the top of the element aligns with the bottom of the viewport), and the 'end' is when the element goes out of view (when the bottom of the elements aligns with the top of the viewport). These trigger points can be customised with the `cameraStart` and `cameraEnd` properties. Additional scroll-dependant procedures can also be defined through `scrollActions`<!-- -->.
+
 See [ScrollControlsProps](./three-story-controls.scrollcontrolsprops.md) for all properties that can be passed to the constructor.
 
 [DEMO](https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls/)

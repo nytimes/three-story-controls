@@ -4,7 +4,7 @@
   <img width="500" src="https://media.giphy.com/media/QMim8tRiABuko/giphy.gif" />
   <p>
     <br>
-    A collection of useful components for creating interactive 3d stories with three.js -- A camera controller and tool for designing camera paths, helper components for creating custom control schemes, and a collection of pre-made control schemes.
+    A three.js camera toolkit for creating interactive 3d stories: Flexible camera rig API + visual tool for designing camera animations + collection of camera control schemes + helper components to wire smoothed inputs to camera actions, to create custom control schemes.
     <br>
   </p>
   <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-yellow.svg" />
@@ -21,7 +21,8 @@
     <a href="#camera-helper">Camera Helper</a> &mdash;
     <a href="#control-schemes">Control Schemes</a> &mdash;
     <a href="#input-adaptors">Input Adaptors</a> 
-    <br><br>
+    <br>
+    <a href="#building-your-own-control-scheme">Building your own control scheme</a> 
 </div>
 
 
@@ -182,7 +183,57 @@ Adaptors are responsible for smoothing and transforming input data into somethin
 ---
 
 ## Building your own control scheme
-You could build your own control schemes using a combination of `Adaptor`s and the `CameraRig`. Extend the [`BaseControls`](src/controlschemes/BaseControls.ts) class, and implement `enable()`, `disable()` and `update(time)` methods. See the existing [control schemes](src/controlschemes) for examples.
+You could build your own control schemes using a combination of `Adaptor`s and the `CameraRig`. Here is a rough implementation in TypeScript, see the existing [control schemes](src/controlschemes) for examples.
+
+```typescript
+class MyCustomControls implements BaseControls {
+  constructor(cameraRig) {
+    this.rig = rig
+    // Initialize required adaptors
+    this.keyboardAdaptor = new KeyboardAdaptor( /* props */ )
+    this.pointerAdaptor = new PointerAdaptor( /* props */ )
+    // Bind this class instance to the event handler functions (implemented below)
+    this.onKey = this.onKey.bind(this)
+    this.onPointer = this.onPointer.bind(this)
+  }
+
+  // Implement BaseControl method
+  enable() {
+    // Connect the adaptors
+    this.keyboardAdaptor.connect()
+    this.pointerAdaptor.connect()
+    this.keyboardAdaptor.addEventListener('update', this.onKey)
+    this.pointerAdaptor.addEventListener('update', this.onPointer)
+    this.enabled = true
+  }
+
+  // Implement BaseControl method
+  disable() {
+    // Disconnect, remove event listeners, set enabled to false
+  }
+
+  // Implement BaseControl method
+  update(time: number): void {
+    if (this.enabled) {
+      this.keyboardAdaptor.update()
+      this.pointerAdaptor.update(time)
+    }
+  }
+
+  // Handle events
+  // Adaptors emit smoothed (and normalized) values that can be processed as needed
+  // See adaptor docs for details on the event signatures  
+  private onKey(event) {
+    // Tell the Camera Rig to do a specific action, by a given amount
+    this.cameraRig.do(CameraAction.Dolly, event.value.backward - event.value.forward)
+  }
+
+  private onPointer(event) {
+    this.cameraRig.do(CameraAction.Pan, event.deltas.x)
+  }
+}
+```
+
 
 ---
 

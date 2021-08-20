@@ -22,6 +22,10 @@ export interface PathPointsControlsProps {
 /**
  * Control scheme to transition the camera between specific points (frames) along a path specified through an `AnimationClip`.
  * @remarks
+ * Control scheme to transition the camera between specific points (frames) along a path specified through an `AnimationClip`.
+ *  A mouse wheel or swipe or keyboard arrow event triggers the camera to smoothly transition from one given frame number to the next.
+ *
+ *
  * Note: CSS property `touch-action: none` will probably be needed on listener element.
  *
  * See {@link three-story-controls#PathPointsControlsProps} for all properties that can be passed to the constructor.

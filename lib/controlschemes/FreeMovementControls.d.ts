@@ -25,6 +25,10 @@ export interface FreeMovementControlsProps {
 /**
  * Control scheme to move the camera with arrow/WASD keys and mouse wheel; and rotate the camera with click-and-drag events.
  * @remarks
+ * Control scheme to move the camera with arrow/WASD keys and mouse wheel; and rotate the camera with click-and-drag events.
+ *  On a touch device, 1 finger swipe rotates the camera, and 2 fingers tranlsate/move the camera.
+ *
+ *
  *  Note: CSS property `touch-action: none` will probably be needed on listener element.
  *
  * See {@link three-story-controls#FreeMovementControlsProps} for all properties that can be passed to the constructor.

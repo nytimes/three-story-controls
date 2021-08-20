@@ -2,13 +2,16 @@
 <div align="center">
   <h1>Three Story Controls</h1>
   <img width="500" src="https://media.giphy.com/media/QMim8tRiABuko/giphy.gif" />
+  <h2> A three.js camera toolkit for creating interactive 3d stories. </h2>
   <p>
-    <br>
-    A three.js camera toolkit for creating interactive 3d stories: Flexible camera rig API + visual tool for designing camera animations + collection of camera control schemes + helper components to wire smoothed inputs to camera actions, to create custom control schemes.
-    <br>
+    • Flexible camera rig API <br>
+    • Visual tool for designing camera animations <br>
+    • Collection of camera control schemes <br>
+    • Helper components to wire smoothed inputs to camera actions for custom control schemes.
+    <br><br>
   </p>
   <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-yellow.svg" />
-  <!-- <a href=""><img alt="Build status" src=""></a> -->
+  <a href="https://cloud.drone.io/nytimes/three-story-controls"><img alt="Build status" src="https://cloud.drone.io/api/badges/nytimes/three-story-controls/status.svg"></a>
   <br/><br/>
     <a href="#demos">Demos</a> &mdash;
     <a href="#usage">Usage</a> &mdash;
@@ -22,17 +25,20 @@
     <a href="#control-schemes">Control Schemes</a> &mdash;
     <a href="#input-adaptors">Input Adaptors</a> 
     <br>
-    <a href="#building-your-own-control-scheme">Building your own control scheme</a> 
+    <a href="#building-your-own-control-scheme">Building your own control scheme</a> <br><br>
 </div>
 
 
+---
+
+<br>
 
 ## Demos
-* [Camera Helper](https://nytimes.github.io/three-story-controls/examples/demos/camera-helper): Helper tool to create camera animations and/or points of interest that can be exported and used by the control schemes.
 * [FreeMovement controls](https://nytimes.github.io/three-story-controls/examples/demos/freemove): First-person controls to move freely around the scene.
 * [Scroll + 3DOF controls](https://nytimes.github.io/three-story-controls/examples/demos/scroll-controls): Scroll through the page to scrub through a camera animation. Slightly rotate the camera with mouse movements. 
 * [StoryPoint + 3DOF controls](https://nytimes.github.io/three-story-controls/examples/demos/story-points): Transition between specific points in the scene. Slightly rotate the camera with mouse movements. 
 * [PathPoint controls](https://nytimes.github.io/three-story-controls/examples/demos/path-points): Transition between specific frames of a camera animation.
+* [Camera Helper](https://nytimes.github.io/three-story-controls/examples/demos/camera-helper): Helper tool to create camera animations and/or points of interest that can be exported and used by the control schemes.
 
 <br> 
 
@@ -245,7 +251,10 @@ API documentation lives [here](docs/three-story-controls.md), and demos can be v
 ## Contributing
 Contributions are welcome! To develop locally, run `npm install` and then `npm run dev`. The [demos](examples/demos) directory will be watched and served at `http://localhost:8080/examples/demos`, where you can add a new page to test out changes (please ensure test pages are ignored by git). 
 
-If you add a new component, be sure to create an example and document it following the [TSDoc](https://tsdoc.org/) standard. The library uses [API Extractor](https://api-extractor.com/), which has [some additional](https://api-extractor.com/pages/tsdoc/doc_comment_syntax/) comment tags available. To extract the documentation, run `npm run build:docs`. For production builds, run `npm run build:production`.
+If you add a new component, be sure to create an example and document it following the [TSDoc](https://tsdoc.org/) standard. The library uses [API Extractor](https://api-extractor.com/), which has [some additional](https://api-extractor.com/pages/tsdoc/doc_comment_syntax/) comment tags available. To extract the documentation, run `npm run docs`. 
 
+---
+
+<br>
 
 > This repository is maintained by the Research & Development team at The New York Times and is provided as-is for your own use. For more information about R&D at the Times visit [rd.nytimes.com](https://rd.nytimes.com)

@@ -5,8 +5,12 @@
   "main": "dist/three-story-controls.esm.min.js",
   "module": "dist/three-story-controls.esm.min.js",
   "typings": "./lib/three-story-controls.d.ts",
-  "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nytimes/three-story-controls.git"
+  },
+  "homepage": "https://github.com/nytimes/three-story-controls",
   "directories": {
     "example": "examples"
   },

@@ -83,7 +83,7 @@ render()
 The library depends on [three.js](https://threejs.org/) r129 and [gsap](https://greensock.com/gsap/) 3.6.1, which need to be installed separately. 
 
 ### 1. ES Module
-Download [`dist/three-story-controls.esm.min.js`](dist/three-story-controls.esm.min.js) and use an `importmap-shim` to import the dependencies. See [here](examples/installation/es-module) for a full example. The [demos](examples/demos) also use this method of installation:
+Download [`dist/three-story-controls.esm.min.js`](dist/three-story-controls.esm.min.js) (or use the [CDN link](https://unpkg.com/three-story-controls@latest/dist/three-story-controls.esm.min.js)) and use an `importmap-shim` to import the dependencies. See [here](examples/installation/es-module) for a full example. The [demos](examples/demos) also use this method of installation:
   
   #### **`index.html`**
   ```html
@@ -107,14 +107,14 @@ Download [`dist/three-story-controls.esm.min.js`](dist/three-story-controls.esm.
   ```
 
 ### 2. NPM
-If you use a build system such as Webpack / Parcel / Rollup etc, you can also install the library along with three.js and gsap from npm:
+If you use a build system such as Webpack / Parcel / Rollup etc, you can also install the library along with three.js and gsap from [npm](https://www.npmjs.com/package/three-story-controls):
 ```
 npm install -s three gsap three-story-controls
 ```
 See [here](examples/installation/webpack) for a webpack example.
 
 ### 3. Script tag
-Download [`dist/three-story-controls.min.js`](dist/three-story-controls.min.js) and include it in your HTML file with a script tag, along with three.js and gsap. This will expose a global variable `ThreeStoryControls`. See [here](examples/installation/script-src) for more:
+Download [`dist/three-story-controls.min.js`](dist/three-story-controls.min.js) (or use the [CDN link](https://unpkg.com/three-story-controls@latest/dist/three-story-controls.min.js)) and include it in your HTML file with a script tag, along with three.js and gsap. This will expose a global variable `ThreeStoryControls`. See [here](examples/installation/script-src) for more:
   ```html
   <script src="https://unpkg.com/three@0.129.0/build/three.min.js"></script>
   <script src="https://unpkg.com/gsap@3.6.1/dist/gsap.min.js"></script>

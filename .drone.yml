@@ -17,6 +17,10 @@ steps:
     image: node:12
     commands:
       - npm run docs:production
+    trigger:
+      branch:
+      - main
+      - staging
 
   - name: build
     image: node:12
@@ -26,4 +30,20 @@ steps:
       - npm run examples:link
     environment:
       NODE_ENV: production
+    trigger:
+      branch:
+      - main
+      - staging
 
+  - name: npm
+    image: plugins/npm
+    settings:
+      username: 
+        from_secret: npm_username
+      password:
+        from_secret: npm_password
+      email: 
+        from_secret: npm_email
+    trigger:
+      branch:
+      - main

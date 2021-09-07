@@ -1,6 +1,6 @@
 {
   "name": "three-story-controls",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A collection of components to make three.js camera controls easier",
   "main": "dist/three-story-controls.esm.min.js",
   "module": "dist/three-story-controls.esm.min.js",

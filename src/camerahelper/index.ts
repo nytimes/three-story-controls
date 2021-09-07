@@ -217,102 +217,110 @@ export class CameraHelper {
   }
 
   private createClip(): void {
-    const times = []
-    const positionValues = []
-    const quaternionValues = []
-    const tmpPosition = new Vector3()
-    const tmpQuaternion = new Quaternion()
-    const framesPerPoi = 10
+    if (this.pois.length > 0) {
+      const times = []
+      const positionValues = []
+      const quaternionValues = []
+      const tmpPosition = new Vector3()
+      const tmpQuaternion = new Quaternion()
+      const framesPerPoi = 10
 
-    let tweenStartTime = 0
+      let tweenStartTime = 0
 
-    for (let i = 0; i < this.pois.length - 1; i++) {
-      const p1 = this.pois[i]
-      const p2 = this.pois[i + 1]
+      for (let i = 0; i < this.pois.length - 1; i++) {
+        const p1 = this.pois[i]
+        const p2 = this.pois[i + 1]
 
-      const values = {
-        px: p1.position.x,
-        py: p1.position.y,
-        pz: p1.position.z,
-        qx: p1.quaternion.x,
-        qy: p1.quaternion.y,
-        qz: p1.quaternion.z,
-        qw: p1.quaternion.w,
-        slerpAmount: 0,
-      }
-
-      const target = {
-        px: p2.position.x,
-        py: p2.position.y,
-        pz: p2.position.z,
-        qx: p2.quaternion.x,
-        qy: p2.quaternion.y,
-        qz: p2.quaternion.z,
-        qw: p2.quaternion.w,
-        slerpAmount: 1,
-        duration: p2.duration,
-        ease: p2.ease,
-      }
-
-      const tween = gsap.to(values, target)
-
-      for (let j = 0; j < framesPerPoi; j++) {
-        const lerpAmount = p2.duration * (j / framesPerPoi)
-        times.push(tweenStartTime + lerpAmount)
-        tween.seek(lerpAmount)
-        if (this.useSlerp) {
-          tmpQuaternion.slerpQuaternions(p1.quaternion, p2.quaternion, values.slerpAmount)
-        } else {
-          tmpQuaternion.set(values.qx, values.qy, values.qz, values.qw)
+        const values = {
+          px: p1.position.x,
+          py: p1.position.y,
+          pz: p1.position.z,
+          qx: p1.quaternion.x,
+          qy: p1.quaternion.y,
+          qz: p1.quaternion.z,
+          qw: p1.quaternion.w,
+          slerpAmount: 0,
         }
-        tmpPosition.set(values.px, values.py, values.pz)
-        tmpQuaternion.toArray(quaternionValues, quaternionValues.length)
-        tmpPosition.toArray(positionValues, positionValues.length)
+
+        const target = {
+          px: p2.position.x,
+          py: p2.position.y,
+          pz: p2.position.z,
+          qx: p2.quaternion.x,
+          qy: p2.quaternion.y,
+          qz: p2.quaternion.z,
+          qw: p2.quaternion.w,
+          slerpAmount: 1,
+          duration: p2.duration,
+          ease: p2.ease,
+        }
+
+        const tween = gsap.to(values, target)
+
+        for (let j = 0; j < framesPerPoi; j++) {
+          const lerpAmount = p2.duration * (j / framesPerPoi)
+          times.push(tweenStartTime + lerpAmount)
+          tween.seek(lerpAmount)
+          if (this.useSlerp) {
+            tmpQuaternion.slerpQuaternions(p1.quaternion, p2.quaternion, values.slerpAmount)
+          } else {
+            tmpQuaternion.set(values.qx, values.qy, values.qz, values.qw)
+          }
+          tmpPosition.set(values.px, values.py, values.pz)
+          tmpQuaternion.toArray(quaternionValues, quaternionValues.length)
+          tmpPosition.toArray(positionValues, positionValues.length)
+        }
+        tweenStartTime += p2.duration
       }
-      tweenStartTime += p2.duration
+      // add last point
+      const last = this.pois[this.pois.length - 1]
+      last.quaternion.toArray(quaternionValues, quaternionValues.length)
+      last.position.toArray(positionValues, positionValues.length)
+      times.push(tweenStartTime)
+      this.animationClip = new AnimationClip(null, tweenStartTime, [
+        new VectorKeyframeTrack('Translation.position', times, positionValues),
+        new QuaternionKeyframeTrack('Rotation.quaternion', times, quaternionValues),
+      ])
+      this.rig.setAnimationClip(this.animationClip)
     }
-    // add last point
-    const last = this.pois[this.pois.length - 1]
-    last.quaternion.toArray(quaternionValues, quaternionValues.length)
-    last.position.toArray(positionValues, positionValues.length)
-    times.push(tweenStartTime)
-    this.animationClip = new AnimationClip(null, tweenStartTime, [
-      new VectorKeyframeTrack('Translation.position', times, positionValues),
-      new QuaternionKeyframeTrack('Rotation.quaternion', times, quaternionValues),
-    ])
-    this.rig.setAnimationClip(this.animationClip)
   }
 
   private scrubClip(amount: number): void {
-    this.rig.setAnimationPercentage(amount)
+    if (this.pois.length > 0) {
+      this.rig.setAnimationPercentage(amount)
+    }
   }
 
   private playClip(): void {
-    this.isPlaying = true
+    if (this.pois.length > 0) {
+      this.isPlaying = true
+    }
   }
 
   private export(): void {
-    const jsondata = {} as any
-    jsondata.pois = this.pois.map((poi) => {
-      const position = [poi.position.x, poi.position.y, poi.position.z]
-      const quaternion = [poi.quaternion.x, poi.quaternion.y, poi.quaternion.z, poi.quaternion.w]
-      return {
-        position,
-        quaternion,
-        duration: poi.duration,
-        ease: poi.ease,
+    if (this.pois.length > 0) {
+      const jsondata = {} as any
+      jsondata.pois = this.pois.map((poi) => {
+        const position = [poi.position.x, poi.position.y, poi.position.z]
+        const quaternion = [poi.quaternion.x, poi.quaternion.y, poi.quaternion.z, poi.quaternion.w]
+        return {
+          position,
+          quaternion,
+          duration: poi.duration,
+          ease: poi.ease,
+        }
+      })
+      if (this.animationClip) {
+        jsondata.animationClip = AnimationClip.toJSON(this.animationClip)
       }
-    })
-    if (this.animationClip) {
-      jsondata.animationClip = AnimationClip.toJSON(this.animationClip)
+      const data = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(jsondata))
+      const a = document.createElement('a')
+      a.href = 'data:' + data
+      a.download = 'camera-data.json'
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
     }
-    const data = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(jsondata))
-    const a = document.createElement('a')
-    a.href = 'data:' + data
-    a.download = 'camera-control.json'
-    document.body.appendChild(a)
-    a.click()
-    a.remove()
   }
 
   private exportImages(): void {

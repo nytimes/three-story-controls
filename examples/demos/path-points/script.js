@@ -11,7 +11,7 @@ import {
   HemisphereLight,
 } from 'three'
 import { CameraRig, PathPointsControls, ThreeDOFControls } from 'three-story-controls'
-import cameraData from './camera-control.js'
+import cameraData from './camera-data.js'
 
 const canvasParent = document.querySelector('.canvas-parent')
 const caption = document.querySelector('.caption p')

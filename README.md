@@ -51,7 +51,7 @@ Here is an example of the `FreeMovementControls` scheme, where camera translatio
 
 ```javascript
 import { Scene, PerspectiveCamera, WebGLRenderer, GridHelper } from 'three'
-import { CameraRig, FreeMovementControls } from './three-story-controls.web.esm.js'
+import { CameraRig, FreeMovementControls } from 'three-story-controls'
 
 const scene = new Scene()
 const camera = new PerspectiveCamera()

@@ -29,8 +29,7 @@
     "api:generate": "api-documenter markdown --input-folder temp --output-folder docs/",
     "docs": "npm run build:types && npm run api:extract && npm run api:generate",
     "docs:production": "npm run build:types && npm run api:extract:production && npm run api:generate",
-    "examples:link": "cd examples/installation/webpack && npm link ../../../",
-    "build:production": "export NODE_ENV=production || set NODE_ENV=production && npm run build && npm run examples:link",
+    "build:production": "export NODE_ENV=production || set NODE_ENV=production && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {

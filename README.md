@@ -16,7 +16,7 @@
     <a href="#demos">Demos</a> &mdash;
     <a href="#usage">Usage</a> &mdash;
     <a href="#installation">Installation</a> &mdash;
-    <a href="docs/three-story-controls.html">API Docs</a> &mdash; 
+    <a href="https://nytimes.github.io/three-story-controls/docs/three-story-controls.html">API Docs</a> &mdash; 
     <a href="#contributing">Contributing</a> 
     <br><br>
     Components: <br>

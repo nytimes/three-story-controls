@@ -1037,6 +1037,8 @@ export declare interface StoryPointMarker {
     duration?: number;
     /** Transition easing, defaults to power1 */
     ease?: string;
+    /** Use spherical interpolation for rotation, defaults to true */
+    useSlerp?: boolean;
 }
 
 /**

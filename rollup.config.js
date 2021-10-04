@@ -52,10 +52,10 @@ const esmConfig = {
   plugins: [...commonPlugins()],
 }
 
-const config = [esmConfig]
+const config = [umdConfig, esmConfig]
 
-if (NODE_ENV === 'production') {
-  config.push(umdConfig)
-}
+// if (NODE_ENV === 'production') {
+//   config.push(umdConfig)
+// }
 
 export default config

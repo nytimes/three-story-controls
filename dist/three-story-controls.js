@@ -443,7 +443,7 @@
          * @param ease
          * @param useSlerp
          */
-        flyTo(position, quaternion, duration = 1, ease = 'power1', useSlerp = false) {
+        flyTo(position, quaternion, duration = 1, ease = 'power1', useSlerp = true) {
             if (!this.isMoving()) {
                 const currentCoords = this.getWorldCoordinates();
                 const currentValues = {
@@ -466,6 +466,8 @@
                     qw: quaternion.w,
                     slerpAmt: 1,
                 };
+                const tempQuaternion = new three.Quaternion();
+                const startQuaternion = new three.Quaternion(currentValues.qx, currentValues.qy, currentValues.qz, currentValues.qw);
                 const onStart = () => {
                     this.inTransit = true;
                     this.packTransform();
@@ -474,7 +476,8 @@
                 const onUpdate = (tween) => {
                     this.body.position.set(currentValues.px, currentValues.py, currentValues.pz);
                     if (useSlerp) {
-                        this.head.quaternion.slerp(quaternion, currentValues.slerpAmt);
+                        tempQuaternion.slerpQuaternions(startQuaternion, quaternion, currentValues.slerpAmt);
+                        this.head.setRotationFromQuaternion(tempQuaternion);
                     }
                     else {
                         this.head.quaternion.set(currentValues.qx, currentValues.qy, currentValues.qz, currentValues.qw);
@@ -1416,7 +1419,7 @@
         goToPOI(index) {
             this.upcomingIndex = index;
             const poi = this.pois[this.upcomingIndex];
-            this.cameraRig.flyTo(poi.position, poi.quaternion, poi.duration, poi.ease);
+            this.cameraRig.flyTo(poi.position, poi.quaternion, poi.duration, poi.ease, poi.useSlerp);
         }
         enable() {
             if (this.useKeyboard) {

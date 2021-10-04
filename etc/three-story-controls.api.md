@@ -435,6 +435,7 @@ export interface StoryPointMarker {
     ease?: string;
     position: Vector3;
     quaternion: Quaternion;
+    useSlerp?: boolean;
 }
 
 // @public

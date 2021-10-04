@@ -10,6 +10,8 @@ export interface StoryPointMarker {
     duration?: number;
     /** Transition easing, defaults to power1 */
     ease?: string;
+    /** Use spherical interpolation for rotation, defaults to true */
+    useSlerp?: boolean;
 }
 /**
  * Properties that can be passed to the {@link three-story-controls#StoryPointsControls} constructor

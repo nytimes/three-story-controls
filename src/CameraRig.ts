@@ -432,6 +432,8 @@ export class CameraRig extends EventDispatcher {
         qw: quaternion.w,
         slerpAmt: 1,
       }
+      const tempQuaternion = new Quaternion()
+      const startQuaternion = new Quaternion(currentValues.qx, currentValues.qy, currentValues.qz, currentValues.qw)
       const onStart = (): void => {
         this.inTransit = true
         this.packTransform()
@@ -440,7 +442,8 @@ export class CameraRig extends EventDispatcher {
       const onUpdate = (tween): void => {
         this.body.position.set(currentValues.px, currentValues.py, currentValues.pz)
         if (useSlerp) {
-          this.head.quaternion.slerp(quaternion, currentValues.slerpAmt)
+          tempQuaternion.slerpQuaternions(startQuaternion, quaternion, currentValues.slerpAmt)
+          this.head.setRotationFromQuaternion(tempQuaternion)
         } else {
           this.head.quaternion.set(currentValues.qx, currentValues.qy, currentValues.qz, currentValues.qw)
         }

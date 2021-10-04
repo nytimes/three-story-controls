@@ -12,6 +12,8 @@ export interface StoryPointMarker {
   duration?: number
   /** Transition easing, defaults to power1 */
   ease?: string
+  /** Use spherical interpolation for rotation, defaults to true */
+  useSlerp?: boolean
 }
 
 /**
@@ -119,7 +121,7 @@ export class StoryPointsControls extends EventDispatcher implements BaseControls
   goToPOI(index: number): void {
     this.upcomingIndex = index
     const poi = this.pois[this.upcomingIndex]
-    this.cameraRig.flyTo(poi.position, poi.quaternion, poi.duration, poi.ease)
+    this.cameraRig.flyTo(poi.position, poi.quaternion, poi.duration, poi.ease, poi.useSlerp)
   }
 
   enable(): void {

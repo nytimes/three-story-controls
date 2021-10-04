@@ -88,6 +88,8 @@ const cameraPositions = storyPoints.map((item) => {
   return {
     position,
     quaternion,
+    duration: 1,
+    useSlerp: true,
   }
 })
 

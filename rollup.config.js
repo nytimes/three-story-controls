@@ -27,7 +27,7 @@ const commonPlugins = () => {
 const umdConfig = {
   input,
   output: {
-    file: 'dist/three-story-controls.min.js',
+    file: `dist/three-story-controls${NODE_ENV == 'production' ? '.min' : ''}.js`,
     format: 'umd',
     name,
     sourcemap,

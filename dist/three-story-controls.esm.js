@@ -1,5 +1,5 @@
 import { Vector3, EventDispatcher, Object3D, PerspectiveCamera, Quaternion, Euler, AnimationMixer, AnimationClip, VectorKeyframeTrack, QuaternionKeyframeTrack } from 'three';
-import { TweenMax, gsap } from 'gsap';
+import gsap from 'gsap';
 
 /**
  * Damper uses simple linear damping for a given collection of values.
@@ -436,7 +436,7 @@ class CameraRig extends EventDispatcher {
      * @param ease
      * @param useSlerp
      */
-    flyTo(position, quaternion, duration = 1, ease = 'power1', useSlerp = true) {
+    flyTo(position, quaternion, duration = 1, ease = 'power1', useSlerp = false) {
         if (!this.isMoving()) {
             const currentCoords = this.getWorldCoordinates();
             const currentValues = {
@@ -482,7 +482,7 @@ class CameraRig extends EventDispatcher {
                 this.unpackTransform();
                 this.dispatchEvent({ type: 'CameraMoveEnd' });
             };
-            TweenMax.to(currentValues, Object.assign(Object.assign({ duration,
+            gsap.to(currentValues, Object.assign(Object.assign({ duration,
                 ease }, targetValues), { onStart, onUpdate: function () {
                     onUpdate(this);
                 }, onComplete }));
@@ -518,7 +518,7 @@ class CameraRig extends EventDispatcher {
                 this.inTransit = false;
                 this.dispatchEvent({ type: 'CameraMoveEnd' });
             };
-            TweenMax.to(currentValues, Object.assign(Object.assign({ duration,
+            gsap.to(currentValues, Object.assign(Object.assign({ duration,
                 ease }, targetValues), { onStart, onUpdate: function () {
                     onUpdate(this);
                 }, onComplete }));

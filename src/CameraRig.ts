@@ -11,7 +11,7 @@ import {
   Euler,
 } from 'three'
 
-import { TweenMax } from 'gsap'
+import gsap from 'gsap'
 
 /**
  * Event: Fired when CameraRig starts a transition
@@ -437,7 +437,7 @@ export class CameraRig extends EventDispatcher {
         this.packTransform()
         this.dispatchEvent({ type: 'CameraMoveStart' } as CameraMoveStartEvent)
       }
-      const onUpdate = (tween: TweenMax): void => {
+      const onUpdate = (tween): void => {
         this.body.position.set(currentValues.px, currentValues.py, currentValues.pz)
         if (useSlerp) {
           this.head.quaternion.slerp(quaternion, currentValues.slerpAmt)
@@ -454,7 +454,7 @@ export class CameraRig extends EventDispatcher {
         this.unpackTransform()
         this.dispatchEvent({ type: 'CameraMoveEnd' } as CameraMoveEndEvent)
       }
-      TweenMax.to(currentValues, {
+      gsap.to(currentValues, {
         duration,
         ease,
         ...targetValues,
@@ -486,7 +486,7 @@ export class CameraRig extends EventDispatcher {
         this.inTransit = true
         this.dispatchEvent({ type: 'CameraMoveStart' } as CameraMoveStartEvent)
       }
-      const onUpdate = (tween: TweenMax): void => {
+      const onUpdate = (tween): void => {
         this.mixer.setTime(currentValues.time)
         this.dispatchEvent({
           type: 'CameraMoveUpdate',
@@ -497,7 +497,7 @@ export class CameraRig extends EventDispatcher {
         this.inTransit = false
         this.dispatchEvent({ type: 'CameraMoveEnd' } as CameraMoveEndEvent)
       }
-      TweenMax.to(currentValues, {
+      gsap.to(currentValues, {
         duration,
         ease,
         ...targetValues,

@@ -4,6 +4,10 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ThreeStoryControls = {}, global.THREE, global.gsap));
 }(this, (function (exports, three, gsap) { 'use strict';
 
+    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+    var gsap__default = /*#__PURE__*/_interopDefaultLegacy(gsap);
+
     /**
      * Damper uses simple linear damping for a given collection of values.
      * On every call to update, the damper will approach a given set of target values.
@@ -439,7 +443,7 @@
          * @param ease
          * @param useSlerp
          */
-        flyTo(position, quaternion, duration = 1, ease = 'power1', useSlerp = true) {
+        flyTo(position, quaternion, duration = 1, ease = 'power1', useSlerp = false) {
             if (!this.isMoving()) {
                 const currentCoords = this.getWorldCoordinates();
                 const currentValues = {
@@ -485,7 +489,7 @@
                     this.unpackTransform();
                     this.dispatchEvent({ type: 'CameraMoveEnd' });
                 };
-                gsap.gsap.to(currentValues, Object.assign(Object.assign({ duration,
+                gsap__default['default'].to(currentValues, Object.assign(Object.assign({ duration,
                     ease }, targetValues), { onStart, onUpdate: function () {
                         onUpdate(this);
                     }, onComplete }));
@@ -521,7 +525,7 @@
                     this.inTransit = false;
                     this.dispatchEvent({ type: 'CameraMoveEnd' });
                 };
-                gsap.gsap.to(currentValues, Object.assign(Object.assign({ duration,
+                gsap__default['default'].to(currentValues, Object.assign(Object.assign({ duration,
                     ease }, targetValues), { onStart, onUpdate: function () {
                         onUpdate(this);
                     }, onComplete }));
@@ -1939,7 +1943,7 @@
                         duration: p2.duration,
                         ease: p2.ease,
                     };
-                    const tween = gsap.gsap.to(values, target);
+                    const tween = gsap__default['default'].to(values, target);
                     for (let j = 0; j < framesPerPoi; j++) {
                         const lerpAmount = p2.duration * (j / framesPerPoi);
                         times.push(tweenStartTime + lerpAmount);
@@ -2174,4 +2178,4 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=three-story-controls.min.js.map
+//# sourceMappingURL=three-story-controls.js.map

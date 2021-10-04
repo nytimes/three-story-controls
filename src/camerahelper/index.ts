@@ -1,5 +1,5 @@
 import { Quaternion, Vector3, AnimationClip, VectorKeyframeTrack, QuaternionKeyframeTrack } from 'three'
-import { gsap } from 'gsap'
+import gsap from 'gsap'
 import { CameraRig } from '../CameraRig'
 import { FreeMovementControls } from '../controlschemes/FreeMovementControls'
 import './index.css'

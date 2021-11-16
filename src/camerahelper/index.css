@@ -38,7 +38,7 @@
   .controls {
     position: absolute;
     bottom: 0;
-    height: 185px;
+    height: 225px;
     border-top: 1px solid black;
     padding: 0.5rem;
     width: 100%;
@@ -58,7 +58,7 @@
   }
 
   .pois {
-    height: calc(100vh - 185px - 1rem);
+    height: calc(100vh - 225px - 1rem);
     overflow: scroll;
     padding: 1rem 1rem 0;
   }

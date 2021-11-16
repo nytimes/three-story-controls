@@ -134,6 +134,8 @@ export class CameraHelper {
   private drawer: HTMLElement
   private domList: HTMLElement
   private collapseBtn: HTMLElement
+  private fileInput: HTMLInputElement
+  private btnImport: HTMLElement
   private doCapture: boolean
   private animationClip: AnimationClip
   private isPlaying: boolean
@@ -227,6 +229,15 @@ export class CameraHelper {
 
       let tweenStartTime = 0
 
+      // transform imported arrays to quaternions and vector3 when loading a camera file
+      if (!this.pois[0].quaternion.isQuaternion && !this.pois[0].position.isVector3) {
+        for (let i = 0; i < this.pois.length; i++) {
+          const p = this.pois[i]
+          p.quaternion = new Quaternion(p.quaternion[0], p.quaternion[1], p.quaternion[2], p.quaternion[2])
+          p.position = new Vector3(p.position[0], p.position[1], p.position[2])
+        }
+      }
+
       for (let i = 0; i < this.pois.length - 1; i++) {
         const p1 = this.pois[i]
         const p2 = this.pois[i + 1]
@@ -297,18 +308,42 @@ export class CameraHelper {
     }
   }
 
-  private export(): void {
+  private import(): void {
+    if (this.fileInput) {
+      this.fileInput.click()
+      const reader = new FileReader()
+
+      this.fileInput.onchange = () => {
+        reader.readAsText(this.fileInput.files[0])
+        reader.onload = (e) => {
+          const parsed = JSON.parse(<string>e.target.result)
+          this.pois = parsed.pois
+          this.animationClip = parsed.animationClip
+          this.createClip()
+          this.render()
+        }
+      }
+    }
+  }
+
+  private export({ draft }): void {
     if (this.pois.length > 0) {
       const jsondata = {} as any
       jsondata.pois = this.pois.map((poi) => {
         const position = [poi.position.x, poi.position.y, poi.position.z]
         const quaternion = [poi.quaternion.x, poi.quaternion.y, poi.quaternion.z, poi.quaternion.w]
-        return {
+        const obj = {
           position,
           quaternion,
           duration: poi.duration,
           ease: poi.ease,
+        } as any
+
+        if (draft) {
+          obj.image = poi.image
         }
+
+        return obj
       })
       if (this.animationClip) {
         jsondata.animationClip = AnimationClip.toJSON(this.animationClip)
@@ -316,7 +351,7 @@ export class CameraHelper {
       const data = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(jsondata))
       const a = document.createElement('a')
       a.href = 'data:' + data
-      a.download = 'camera-data.json'
+      a.download = `camera-data${draft ? '-draft' : ''}.json`
       document.body.appendChild(a)
       a.click()
       a.remove()
@@ -353,10 +388,26 @@ export class CameraHelper {
     const controlWrapper = document.createElement('div')
     controlWrapper.classList.add('controls')
 
+    this.fileInput = document.createElement('input')
+    this.fileInput.type = 'file'
+    this.fileInput.id = 'import'
+    this.fileInput.accept = 'application/json'
+    this.fileInput.style.display = 'none'
+
+    this.btnImport = document.createElement('button')
+    this.btnImport.classList.add('btn-text', 'import')
+    this.btnImport.innerText = 'import draft JSON'
+    this.btnImport.onclick = this.import.bind(this)
+
+    const btnExportImages = document.createElement('button')
+    btnExportImages.classList.add('btn-text', 'export')
+    btnExportImages.innerText = 'export draft JSON'
+    btnExportImages.onclick = this.export.bind(this, { draft: true })
+
     const btnExport = document.createElement('button')
     btnExport.classList.add('btn-text', 'export')
-    btnExport.innerText = 'export JSON'
-    btnExport.onclick = this.export.bind(this)
+    btnExport.innerText = 'export production JSON'
+    btnExport.onclick = this.export.bind(this, { draft: false })
 
     const bntExportImages = document.createElement('button')
     bntExportImages.classList.add('btn-text', 'export-images')
@@ -384,7 +435,15 @@ export class CameraHelper {
     this.domList.onclick = this.handleEvents.bind(this)
     this.domList.onchange = this.handleEvents.bind(this)
 
-    controlWrapper.append(btnPlay, sliderTime, bntExportImages, btnExport)
+    controlWrapper.append(
+      this.fileInput,
+      this.btnImport,
+      btnPlay,
+      sliderTime,
+      bntExportImages,
+      btnExportImages,
+      btnExport,
+    )
     this.drawer.append(btnAdd, this.collapseBtn, this.domList, controlWrapper)
 
     const parent = canvasParent || document.body

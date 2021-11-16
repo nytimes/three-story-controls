@@ -1736,7 +1736,7 @@
       }
     }
 
-    var css_248z = ".tb-ch {\n  width: 350px;\n  height: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 99999;\n  background-color: rgba(255, 255, 255, 0.8);\n  box-sizing: border-box;\n  overflow-x: visible;\n  transition: all 0.2s ease-in-out;\n}\n  .tb-ch.collapsed {\n    left: -350px;\n  }\n  .tb-ch * {\n    box-sizing: border-box;\n  }\n  .tb-ch button {\n    text-transform: capitalize;\n    cursor: pointer;\n  }\n  .tb-ch .btn-round {\n    font-size: 1.8rem;\n    line-height: 1;\n    width: 2.5rem;\n    height: 2.5rem;\n    position: absolute;\n    right: -3rem;\n    bottom: 0.5rem;\n  }\n  .tb-ch .btn-round.collapse {\n      bottom: 3.5rem;\n    }\n  .tb-ch .controls {\n    position: absolute;\n    bottom: 0;\n    height: 185px;\n    border-top: 1px solid black;\n    padding: 0.5rem;\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n  }\n  .tb-ch .btn-text {\n    padding: 0.5rem;\n    text-align: center;\n    width: 100%;\n  }\n  .tb-ch input[type='range'] {\n    width: 100%;\n  }\n  .tb-ch .pois {\n    height: calc(100vh - 185px - 1rem);\n    overflow: scroll;\n    padding: 1rem 1rem 0;\n  }\n  .tb-ch .poi {\n    margin-bottom: 1rem;\n  }\n  .tb-ch .poi h2 {\n      font-size: 1rem;\n    }\n  .tb-ch .poi .wrapper {\n      display: flex;\n      flex-direction: row;\n    }\n  .tb-ch .poi img {\n      display: block;\n      max-width: 100%;\n      min-width: 0;\n      margin-right: 0.5rem;\n    }\n  .tb-ch .poi .poi-controls {\n      display: flex;\n      flex-direction: column;\n    }\n  .tb-ch .poi .poi-controls button {\n        padding: 0.5rem;\n        width: 2rem;\n        height: 2rem;\n        margin-bottom: 0.25rem;\n      }\n  .tb-ch .poi .poi-params {\n      display: flex;\n      flex-direction: row;\n      flex-wrap: wrap;\n      width: calc(100% - 2.5rem);\n    }\n  .tb-ch .poi label,\n    .tb-ch .poi input,\n    .tb-ch .poi select {\n      width: 50%;\n      font-size: 0.7rem;\n      font-family: monospace;\n      margin: 0.25rem 0;\n    }\n  .tb-ch .poi input {\n      text-align: center;\n    }\n";
+    var css_248z = ".tb-ch {\n  width: 350px;\n  height: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 99999;\n  background-color: rgba(255, 255, 255, 0.8);\n  box-sizing: border-box;\n  overflow-x: visible;\n  transition: all 0.2s ease-in-out;\n}\n  .tb-ch.collapsed {\n    left: -350px;\n  }\n  .tb-ch * {\n    box-sizing: border-box;\n  }\n  .tb-ch button {\n    text-transform: capitalize;\n    cursor: pointer;\n  }\n  .tb-ch .btn-round {\n    font-size: 1.8rem;\n    line-height: 1;\n    width: 2.5rem;\n    height: 2.5rem;\n    position: absolute;\n    right: -3rem;\n    bottom: 0.5rem;\n  }\n  .tb-ch .btn-round.collapse {\n      bottom: 3.5rem;\n    }\n  .tb-ch .controls {\n    position: absolute;\n    bottom: 0;\n    height: 225px;\n    border-top: 1px solid black;\n    padding: 0.5rem;\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n  }\n  .tb-ch .btn-text {\n    padding: 0.5rem;\n    text-align: center;\n    width: 100%;\n  }\n  .tb-ch input[type='range'] {\n    width: 100%;\n  }\n  .tb-ch .pois {\n    height: calc(100vh - 225px - 1rem);\n    overflow: scroll;\n    padding: 1rem 1rem 0;\n  }\n  .tb-ch .poi {\n    margin-bottom: 1rem;\n  }\n  .tb-ch .poi h2 {\n      font-size: 1rem;\n    }\n  .tb-ch .poi .wrapper {\n      display: flex;\n      flex-direction: row;\n    }\n  .tb-ch .poi img {\n      display: block;\n      max-width: 100%;\n      min-width: 0;\n      margin-right: 0.5rem;\n    }\n  .tb-ch .poi .poi-controls {\n      display: flex;\n      flex-direction: column;\n    }\n  .tb-ch .poi .poi-controls button {\n        padding: 0.5rem;\n        width: 2rem;\n        height: 2rem;\n        margin-bottom: 0.25rem;\n      }\n  .tb-ch .poi .poi-params {\n      display: flex;\n      flex-direction: row;\n      flex-wrap: wrap;\n      width: calc(100% - 2.5rem);\n    }\n  .tb-ch .poi label,\n    .tb-ch .poi input,\n    .tb-ch .poi select {\n      width: 50%;\n      font-size: 0.7rem;\n      font-family: monospace;\n      margin: 0.25rem 0;\n    }\n  .tb-ch .poi input {\n      text-align: center;\n    }\n";
     styleInject(css_248z);
 
     const easeFunctions = ['none', 'power1', 'power2', 'power3', 'power4', 'sine', 'expo', 'circ'];
@@ -1921,6 +1921,14 @@
                 const tmpQuaternion = new three.Quaternion();
                 const framesPerPoi = 10;
                 let tweenStartTime = 0;
+                // transform imported arrays to quaternions and vector3 when loading a camera file
+                if (!this.pois[0].quaternion.isQuaternion && !this.pois[0].position.isVector3) {
+                    for (let i = 0; i < this.pois.length; i++) {
+                        const p = this.pois[i];
+                        p.quaternion = new three.Quaternion(p.quaternion[0], p.quaternion[1], p.quaternion[2], p.quaternion[2]);
+                        p.position = new three.Vector3(p.position[0], p.position[1], p.position[2]);
+                    }
+                }
                 for (let i = 0; i < this.pois.length - 1; i++) {
                     const p1 = this.pois[i];
                     const p2 = this.pois[i + 1];
@@ -1985,18 +1993,38 @@
                 this.isPlaying = true;
             }
         }
-        export() {
+        import() {
+            if (this.fileInput) {
+                this.fileInput.click();
+                const reader = new FileReader();
+                this.fileInput.onchange = () => {
+                    reader.readAsText(this.fileInput.files[0]);
+                    reader.onload = (e) => {
+                        const parsed = JSON.parse(e.target.result);
+                        this.pois = parsed.pois;
+                        this.animationClip = parsed.animationClip;
+                        this.createClip();
+                        this.render();
+                    };
+                };
+            }
+        }
+        export({ draft }) {
             if (this.pois.length > 0) {
                 const jsondata = {};
                 jsondata.pois = this.pois.map((poi) => {
                     const position = [poi.position.x, poi.position.y, poi.position.z];
                     const quaternion = [poi.quaternion.x, poi.quaternion.y, poi.quaternion.z, poi.quaternion.w];
-                    return {
+                    const obj = {
                         position,
                         quaternion,
                         duration: poi.duration,
                         ease: poi.ease,
                     };
+                    if (draft) {
+                        obj.image = poi.image;
+                    }
+                    return obj;
                 });
                 if (this.animationClip) {
                     jsondata.animationClip = three.AnimationClip.toJSON(this.animationClip);
@@ -2004,7 +2032,7 @@
                 const data = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(jsondata));
                 const a = document.createElement('a');
                 a.href = 'data:' + data;
-                a.download = 'camera-data.json';
+                a.download = `camera-data${draft ? '-draft' : ''}.json`;
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
@@ -2034,10 +2062,23 @@
             this.collapseBtn.onclick = this.collapse.bind(this);
             const controlWrapper = document.createElement('div');
             controlWrapper.classList.add('controls');
+            this.fileInput = document.createElement('input');
+            this.fileInput.type = 'file';
+            this.fileInput.id = 'import';
+            this.fileInput.accept = 'application/json';
+            this.fileInput.style.display = 'none';
+            this.btnImport = document.createElement('button');
+            this.btnImport.classList.add('btn-text', 'import');
+            this.btnImport.innerText = 'import draft JSON';
+            this.btnImport.onclick = this.import.bind(this);
+            const btnExportImages = document.createElement('button');
+            btnExportImages.classList.add('btn-text', 'export');
+            btnExportImages.innerText = 'export draft JSON';
+            btnExportImages.onclick = this.export.bind(this, { draft: true });
             const btnExport = document.createElement('button');
             btnExport.classList.add('btn-text', 'export');
-            btnExport.innerText = 'export JSON';
-            btnExport.onclick = this.export.bind(this);
+            btnExport.innerText = 'export production JSON';
+            btnExport.onclick = this.export.bind(this, { draft: false });
             const bntExportImages = document.createElement('button');
             bntExportImages.classList.add('btn-text', 'export-images');
             bntExportImages.innerHTML = 'export images';
@@ -2060,7 +2101,7 @@
             this.domList.classList.add('pois');
             this.domList.onclick = this.handleEvents.bind(this);
             this.domList.onchange = this.handleEvents.bind(this);
-            controlWrapper.append(btnPlay, sliderTime, bntExportImages, btnExport);
+            controlWrapper.append(this.fileInput, this.btnImport, btnPlay, sliderTime, bntExportImages, btnExportImages, btnExport);
             this.drawer.append(btnAdd, this.collapseBtn, this.domList, controlWrapper);
             const parent = canvasParent || document.body;
             parent.append(this.drawer);

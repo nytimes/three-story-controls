@@ -33,8 +33,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
-    "gsap": "3",
-    "three": "0.x.x"
+    "gsap": ">= 3.6",
+    "three": ">= 0.129"
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.13.16",

@@ -233,7 +233,7 @@ export class CameraHelper {
       if (!this.pois[0].quaternion.isQuaternion && !this.pois[0].position.isVector3) {
         for (let i = 0; i < this.pois.length; i++) {
           const p = this.pois[i]
-          p.quaternion = new Quaternion(p.quaternion[0], p.quaternion[1], p.quaternion[2], p.quaternion[2])
+          p.quaternion = new Quaternion(p.quaternion[0], p.quaternion[1], p.quaternion[2], p.quaternion[3])
           p.position = new Vector3(p.position[0], p.position[1], p.position[2])
         }
       }

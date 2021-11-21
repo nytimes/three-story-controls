@@ -25,13 +25,19 @@ steps:
   - name: build
     image: node:12
     commands:
-      - npm run build
-    environment:
-      NODE_ENV: production
+      - npm run build:production
     when:
       branch:
       - main
       - dev
+
+  - name: build-npm
+    image: node:12
+    commands:
+      - npm run build:production
+    when:
+      event:
+      - tag
 
   - name: npm
     image: plugins/npm

@@ -112,6 +112,8 @@ export declare class CameraHelper {
     private drawer;
     private domList;
     private collapseBtn;
+    private fileInput;
+    private btnImport;
     private doCapture;
     private animationClip;
     private isPlaying;
@@ -128,6 +130,7 @@ export declare class CameraHelper {
     private createClip;
     private scrubClip;
     private playClip;
+    private import;
     private export;
     private exportImages;
     private initUI;

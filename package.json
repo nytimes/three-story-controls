@@ -30,6 +30,7 @@
     "docs": "npm run build:types && npm run api:extract && npm run api:generate",
     "docs:production": "npm run build:types && npm run api:extract:production && npm run api:generate",
     "build:production": "export NODE_ENV=production || set NODE_ENV=production && npm run build",
+    "prepublish": "npm run prettier && npm run docs:production && npm run build:production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {

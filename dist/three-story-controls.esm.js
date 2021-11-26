@@ -1860,7 +1860,12 @@ class CameraHelper {
     }
     update(time) {
         if (this.doCapture) {
-            const image = this.canvas.toDataURL();
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 640;
+            canvas.height = 360;
+            ctx.drawImage(this.canvas, 0, 0, canvas.width, canvas.height);
+            const image = canvas.toDataURL();
             this.addPoi(image);
             this.doCapture = false;
         }

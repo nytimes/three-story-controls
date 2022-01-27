@@ -14,7 +14,7 @@
     "gsap": "^3.6.1",
     "http-server": "^13.0.2",
     "save": "^2.4.0",
-    "three": "^0.129.0",
+    "three": "^0.137.0",
     "three-story-controls": "^1.0.1"
   },
   "devDependencies": {

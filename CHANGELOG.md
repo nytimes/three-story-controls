@@ -8,3 +8,7 @@
 
 ### v1.0.4
 - Updated drone tasks for manual publish
+
+### v1.0.5
+- Camera helper captures lower res images (640x360) 
+- Bump to Three.js r137

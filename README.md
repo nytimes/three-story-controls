@@ -80,7 +80,7 @@ render()
 
 ## Installation
 
-The library depends on [three.js](https://threejs.org/) r129 and [gsap](https://greensock.com/gsap/) 3.6.1, which need to be installed separately. 
+The library depends on [three.js](https://threejs.org/) r129 or later and [gsap](https://greensock.com/gsap/) 3.6.1, which need to be installed separately. 
 
 ### 1. ES Module
 Download [`dist/three-story-controls.esm.min.js`](dist/three-story-controls.esm.min.js) (or use the [CDN link](https://unpkg.com/three-story-controls@latest/dist/three-story-controls.esm.min.js)) and use an `importmap-shim` to import the dependencies. See [here](examples/installation/es-module) for a full example. The [demos](examples/demos) also use this method of installation:
@@ -91,7 +91,7 @@ Download [`dist/three-story-controls.esm.min.js`](dist/three-story-controls.esm.
   <script type="importmap-shim">
   {
     "imports": {
-      "three": "https://cdn.skypack.dev/three@0.129.0",
+      "three": "https://cdn.skypack.dev/three@0.137.0",
       "gsap": "https://cdn.skypack.dev/gsap@3.6.1",
       "three-story-controls" : "./three-story-controls.esm.min.js"
     }
@@ -116,7 +116,7 @@ See [here](examples/installation/webpack) for a webpack example.
 ### 3. Script tag
 Download [`dist/three-story-controls.min.js`](dist/three-story-controls.min.js) (or use the [CDN link](https://unpkg.com/three-story-controls@latest/dist/three-story-controls.min.js)) and include it in your HTML file with a script tag, along with three.js and gsap. This will expose a global variable `ThreeStoryControls`. See [here](examples/installation/script-src) for more:
   ```html
-  <script src="https://unpkg.com/three@0.129.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.137.0/build/three.min.js"></script>
   <script src="https://unpkg.com/gsap@3.6.1/dist/gsap.min.js"></script>
   <script src='three-story-controls.min.js'></script>
   ```

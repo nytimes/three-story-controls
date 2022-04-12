@@ -1,6 +1,6 @@
 {
   "name": "three-story-controls",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A three.js camera toolkit for creating interactive 3d stories",
   "main": "dist/three-story-controls.esm.min.js",
   "module": "dist/three-story-controls.esm.min.js",

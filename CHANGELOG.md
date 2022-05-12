@@ -12,3 +12,6 @@
 ### v1.0.5
 - Camera helper captures lower res images (640x360) 
 - Bump to Three.js r137
+
+### v1.0.6
+- Bump async from 2.6.3 to 2.6.4 in /examples/installation/webpack 

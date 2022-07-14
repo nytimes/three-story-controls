@@ -74,11 +74,17 @@ const defaultProps: Partial<KeyboardAdaptorProps> = {
     backward: ['ArrowDown', 's', 'S'],
     left: ['ArrowLeft', 'a', 'A'],
     right: ['ArrowRight', 'd', 'D'],
+    rollLeft: ['Q', 'q'],
+    rollRight: ['E', 'e'],
+    tiltDown: ['F', 'f'],
+    tiltUp: ['R', 'r'],
+    panRight: ['C', 'c'],
+    panLeft: ['Z', 'z'],
     up: ['u', 'U'],
     down: ['n', 'N'],
   },
   dampingFactor: 0.5,
-  incrementor: 1,
+  incrementor: 0.1,
   preventBubbling: true,
 }
 

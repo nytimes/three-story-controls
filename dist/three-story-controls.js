@@ -571,11 +571,17 @@
             backward: ['ArrowDown', 's', 'S'],
             left: ['ArrowLeft', 'a', 'A'],
             right: ['ArrowRight', 'd', 'D'],
+            rollLeft: ['Q', 'q'],
+            rollRight: ['E', 'e'],
+            tiltDown: ['F', 'f'],
+            tiltUp: ['R', 'r'],
+            panRight: ['C', 'c'],
+            panLeft: ['Z', 'z'],
             up: ['u', 'U'],
             down: ['n', 'N'],
         },
         dampingFactor: 0.5,
-        incrementor: 1,
+        incrementor: 0.1,
         preventBubbling: true,
     };
     /**
@@ -1303,7 +1309,6 @@
             this.enabled = false;
         }
         onWheel(event) {
-            console.log("WHEEEEEEEEE");
             this.cameraRig.do(exports.CameraAction.Dolly, event.deltas.y * this.wheelScaleFactor);
             this.cameraRig.do(exports.CameraAction.Truck, event.deltas.x * this.wheelScaleFactor);
         }
@@ -1311,6 +1316,9 @@
             this.cameraRig.do(exports.CameraAction.Dolly, event.values.backward - event.values.forward);
             this.cameraRig.do(exports.CameraAction.Truck, event.values.right - event.values.left);
             this.cameraRig.do(exports.CameraAction.Pedestal, event.values.up - event.values.down);
+            this.cameraRig.do(exports.CameraAction.Roll, event.values.rollRight / 30 - event.values.rollLeft / 30);
+            this.cameraRig.do(exports.CameraAction.Tilt, event.values.tiltDown / 30 - event.values.tiltUp / 30);
+            this.cameraRig.do(exports.CameraAction.Pan, event.values.panLeft / 30 - event.values.panRight / 30);
         }
         onPointer(event) {
             switch (event.pointerCount) {

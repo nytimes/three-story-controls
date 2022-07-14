@@ -135,7 +135,6 @@ export class FreeMovementPlusControls implements BaseControls {
   }
 
   private onWheel(event): void {
-    console.log("WHEEEEEEEEE");
     this.cameraRig.do(CameraAction.Dolly, event.deltas.y * this.wheelScaleFactor)
     this.cameraRig.do(CameraAction.Truck, event.deltas.x * this.wheelScaleFactor)
   }
@@ -144,6 +143,10 @@ export class FreeMovementPlusControls implements BaseControls {
     this.cameraRig.do(CameraAction.Dolly, event.values.backward - event.values.forward)
     this.cameraRig.do(CameraAction.Truck, event.values.right - event.values.left)
     this.cameraRig.do(CameraAction.Pedestal, event.values.up - event.values.down)
+
+    this.cameraRig.do(CameraAction.Roll, event.values.rollRight/30 - event.values.rollLeft/30)
+    this.cameraRig.do(CameraAction.Tilt, event.values.tiltDown/30 - event.values.tiltUp/30)
+    this.cameraRig.do(CameraAction.Pan, event.values.panLeft/30 - event.values.panRight/30)
   }
 
   private onPointer(event): void {

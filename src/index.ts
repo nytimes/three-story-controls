@@ -36,6 +36,7 @@ import {
 
 import { BaseControls, ExitPOIsEvent, UpdatePOIsEvent } from './controlschemes/BaseControls'
 import { FreeMovementControls, FreeMovementControlsProps } from './controlschemes/FreeMovementControls'
+import { FreeMovementPlusControls, FreeMovementPlusControlsProps } from './controlschemes/FreeMovementPlusControls'
 import { ScrollControls, ScrollControlsProps, ScrollAction } from './controlschemes/ScrollControls'
 import { StoryPointsControls, StoryPointsControlsProps, StoryPointMarker } from './controlschemes/StoryPointsControls'
 import { PathPointsControls, PathPointsControlsProps, PathPointMarker } from './controlschemes/PathPointsControls'
@@ -85,6 +86,8 @@ export {
   UpdatePOIsEvent,
   FreeMovementControls,
   FreeMovementControlsProps,
+  FreeMovementPlusControls,
+  FreeMovementPlusControlsProps,
   ScrollControls,
   ScrollControlsProps,
   ScrollAction,

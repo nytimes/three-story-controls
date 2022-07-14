@@ -565,17 +565,23 @@
         }
     }
 
-    const defaultProps$9 = {
+    const defaultProps$a = {
         keyMapping: {
             forward: ['ArrowUp', 'w', 'W'],
             backward: ['ArrowDown', 's', 'S'],
             left: ['ArrowLeft', 'a', 'A'],
             right: ['ArrowRight', 'd', 'D'],
+            rollLeft: ['Q', 'q'],
+            rollRight: ['E', 'e'],
+            tiltDown: ['F', 'f'],
+            tiltUp: ['R', 'r'],
+            panRight: ['C', 'c'],
+            panLeft: ['Z', 'z'],
             up: ['u', 'U'],
             down: ['n', 'N'],
         },
         dampingFactor: 0.5,
-        incrementor: 1,
+        incrementor: 0.1,
         preventBubbling: true,
     };
     /**
@@ -601,7 +607,7 @@
     class KeyboardAdaptor extends BaseAdaptor {
         constructor(props) {
             super();
-            Object.assign(this, defaultProps$9, props);
+            Object.assign(this, defaultProps$a, props);
             const values = {};
             for (const key in this.keyMapping) {
                 values[key] = 0;
@@ -671,7 +677,7 @@
         }
     }
 
-    const defaultProps$8 = {
+    const defaultProps$9 = {
         domElement: document.body,
         dampingFactor: 0.5,
         shouldNormalize: true,
@@ -720,7 +726,7 @@
             this.cache = [];
             this.lastDownTime = 0;
             this.lastUpTime = 0;
-            Object.assign(this, defaultProps$8, props);
+            Object.assign(this, defaultProps$9, props);
             this.damper = new Damper({
                 values: { x: null, y: null },
                 dampingFactor: this.dampingFactor,
@@ -842,7 +848,7 @@
         }
     }
 
-    const defaultProps$7 = {
+    const defaultProps$8 = {
         startOffset: '0px',
         endOffset: '0px',
         buffer: 0.1,
@@ -865,7 +871,7 @@
     class ScrollAdaptor extends BaseAdaptor {
         constructor(props) {
             super();
-            Object.assign(this, defaultProps$7, props);
+            Object.assign(this, defaultProps$8, props);
             this.lastSeenScrollValue = window.scrollY || -1;
             this.previousScrollValue = this.lastSeenScrollValue;
             this.values = {
@@ -951,7 +957,7 @@
         }
     }
 
-    const defaultProps$6 = {
+    const defaultProps$7 = {
         domElement: document.body,
         thresholdX: 60,
         thresholdY: 60,
@@ -974,7 +980,7 @@
     class SwipeAdaptor extends BaseAdaptor {
         constructor(props = {}) {
             super();
-            Object.assign(this, defaultProps$6, props);
+            Object.assign(this, defaultProps$7, props);
             this.onPointerUp = this.onPointerUp.bind(this);
             this.onPointerDown = this.onPointerDown.bind(this);
         }
@@ -1015,7 +1021,7 @@
         }
     }
 
-    const defaultProps$5 = {
+    const defaultProps$6 = {
         dampingFactor: 0.5,
         thresholdX: 15,
         thresholdY: 15,
@@ -1039,7 +1045,7 @@
         constructor(props) {
             super();
             this.lastThresholdTrigger = 0;
-            Object.assign(this, defaultProps$5, props);
+            Object.assign(this, defaultProps$6, props);
             this.damper = new Damper({
                 values: { x: 0, y: 0 },
                 dampingFactor: this.dampingFactor,
@@ -1096,7 +1102,7 @@
         }
     }
 
-    const defaultProps$4 = {
+    const defaultProps$5 = {
         domElement: document.body,
         pointerDampFactor: 0.3,
         pointerScaleFactor: 4,
@@ -1138,6 +1144,124 @@
      */
     class FreeMovementControls {
         /** {@inheritDoc three-story-controls#FreeMovementControlsProps#} */
+        constructor(cameraRig, props = {}) {
+            this.enabled = false;
+            this.cameraRig = cameraRig;
+            this.wheelScaleFactor = props.wheelScaleFactor || defaultProps$5.wheelScaleFactor;
+            this.pointerScaleFactor = props.pointerScaleFactor || defaultProps$5.pointerScaleFactor;
+            this.panDegreeFactor = props.panDegreeFactor || defaultProps$5.panDegreeFactor;
+            this.tiltDegreeFactor = props.tiltDegreeFactor || defaultProps$5.tiltDegreeFactor;
+            this.keyboardAdaptor = new KeyboardAdaptor({
+                type: 'continuous',
+                dampingFactor: props.keyboardDampFactor || defaultProps$5.keyboardDampFactor,
+                incrementor: props.keyboardScaleFactor || defaultProps$5.keyboardScaleFactor,
+            });
+            this.wheelAdaptor = new WheelAdaptor({
+                type: 'continuous',
+                dampingFactor: props.wheelDampFactor || defaultProps$5.wheelDampFactor,
+                domElement: props.domElement || defaultProps$5.domElement,
+            });
+            this.pointerAdaptor = new PointerAdaptor({
+                domElement: props.domElement || defaultProps$5.domElement,
+                dampingFactor: props.pointerDampFactor || defaultProps$5.pointerDampFactor,
+            });
+            this.onWheel = this.onWheel.bind(this);
+            this.onKey = this.onKey.bind(this);
+            this.onPointer = this.onPointer.bind(this);
+        }
+        isEnabled() {
+            return this.enabled;
+        }
+        enable() {
+            this.wheelAdaptor.connect();
+            this.keyboardAdaptor.connect();
+            this.pointerAdaptor.connect();
+            this.wheelAdaptor.addEventListener('update', this.onWheel);
+            this.keyboardAdaptor.addEventListener('update', this.onKey);
+            this.pointerAdaptor.addEventListener('update', this.onPointer);
+            this.enabled = true;
+        }
+        disable() {
+            this.wheelAdaptor.disconnect();
+            this.keyboardAdaptor.disconnect();
+            this.pointerAdaptor.disconnect();
+            this.wheelAdaptor.removeEventListener('update', this.onWheel);
+            this.keyboardAdaptor.removeEventListener('update', this.onKey);
+            this.pointerAdaptor.removeEventListener('update', this.onPointer);
+            this.enabled = false;
+        }
+        onWheel(event) {
+            this.cameraRig.do(exports.CameraAction.Dolly, event.deltas.y * this.wheelScaleFactor);
+            this.cameraRig.do(exports.CameraAction.Truck, event.deltas.x * this.wheelScaleFactor);
+        }
+        onKey(event) {
+            this.cameraRig.do(exports.CameraAction.Dolly, event.values.backward - event.values.forward);
+            this.cameraRig.do(exports.CameraAction.Truck, event.values.right - event.values.left);
+            this.cameraRig.do(exports.CameraAction.Pedestal, event.values.up - event.values.down);
+        }
+        onPointer(event) {
+            switch (event.pointerCount) {
+                case 1:
+                    this.cameraRig.do(exports.CameraAction.Pan, event.deltas.x * this.panDegreeFactor);
+                    this.cameraRig.do(exports.CameraAction.Tilt, event.deltas.y * this.tiltDegreeFactor);
+                    break;
+                case 2:
+                    this.cameraRig.do(exports.CameraAction.Dolly, -event.deltas.y * this.pointerScaleFactor);
+                    this.cameraRig.do(exports.CameraAction.Truck, -event.deltas.x * this.pointerScaleFactor);
+                    break;
+            }
+        }
+        update(time) {
+            if (this.enabled) {
+                this.keyboardAdaptor.update();
+                this.wheelAdaptor.update();
+                this.pointerAdaptor.update(time);
+            }
+        }
+    }
+
+    const defaultProps$4 = {
+        domElement: document.body,
+        pointerDampFactor: 0.3,
+        pointerScaleFactor: 4,
+        keyboardDampFactor: 0.5,
+        keyboardScaleFactor: 0.5,
+        wheelDampFactor: 0.25,
+        wheelScaleFactor: 0.05,
+        panDegreeFactor: Math.PI / 4,
+        tiltDegreeFactor: Math.PI / 10,
+    };
+    /**
+     * Control scheme to move the camera with arrow/WASD keys and mouse wheel; and rotate the camera with click-and-drag events.
+     * @remarks
+     * Control scheme to move the camera with arrow/WASD keys and mouse wheel; and rotate the camera with click-and-drag events.
+     *  On a touch device, 1 finger swipe rotates the camera, and 2 fingers tranlsate/move the camera.
+     *
+     *
+     *  Note: CSS property `touch-action: none` will probably be needed on listener element.
+     *
+     * See {@link three-story-controls#FreeMovementPlusControlsProps} for all properties that can be passed to the constructor.
+     *
+     * {@link https://nytimes.github.io/three-story-controls/examples/demos/freemove | DEMO }
+     *
+     * @example
+     * ```js
+     * const scene = new Scene()
+     * const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+     * const cameraRig = new CameraRig(camera, scene)
+     * const controls = new FreeMovementPlusControls(cameraRig)
+     *
+     * controls.enable()
+     *
+     * // render loop
+     * function animate(t) {
+     *  controls.update(t)
+     * }
+     * ```
+     *
+     */
+    class FreeMovementPlusControls {
+        /** {@inheritDoc three-story-controls#FreeMovementPlusControlsProps#} */
         constructor(cameraRig, props = {}) {
             this.enabled = false;
             this.cameraRig = cameraRig;
@@ -1192,6 +1316,9 @@
             this.cameraRig.do(exports.CameraAction.Dolly, event.values.backward - event.values.forward);
             this.cameraRig.do(exports.CameraAction.Truck, event.values.right - event.values.left);
             this.cameraRig.do(exports.CameraAction.Pedestal, event.values.up - event.values.down);
+            this.cameraRig.do(exports.CameraAction.Roll, event.values.rollRight / 30 - event.values.rollLeft / 30);
+            this.cameraRig.do(exports.CameraAction.Tilt, event.values.tiltDown / 30 - event.values.tiltUp / 30);
+            this.cameraRig.do(exports.CameraAction.Pan, event.values.panLeft / 30 - event.values.panRight / 30);
         }
         onPointer(event) {
             switch (event.pointerCount) {
@@ -2214,6 +2341,7 @@
     exports.CameraRig = CameraRig;
     exports.Damper = Damper;
     exports.FreeMovementControls = FreeMovementControls;
+    exports.FreeMovementPlusControls = FreeMovementPlusControls;
     exports.KeyboardAdaptor = KeyboardAdaptor;
     exports.PathPointsControls = PathPointsControls;
     exports.PointerAdaptor = PointerAdaptor;
